@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppURLRepo } from '../../utils/app-url-repo';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public notificationManagerLogo: string;
+
+  constructor() {
+    this.notificationManagerLogo = AppURLRepo.NOTIFICATIONS_MANAGER_LOGO;
+  }
 
   ngOnInit() {
   }
