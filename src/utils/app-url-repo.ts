@@ -6,4 +6,8 @@ export class AppURLRepo {
 
   public static readonly NOTIFICATIONS_MANAGER_LOGO: string = AppURLRepo.IMG_URL + '/' + 'logo-MN.png';
 
+  public static readonly UPLOAD_IMAGE: string = AppURLRepo.IMG_URL + '/' + 'submit-large-HM-image.png';
+
+  public static readonly DOWNLOAD_IMAGE: string = AppURLRepo.IMG_URL + '/' + 'generate-large-HM-image.png';
+
 }

@@ -1,0 +1,54 @@
+@import "../../assets/partials/variables";
+
+
+.home-wrapper {
+  color: #333333;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  padding-left: 150px;
+  padding-right: 150px;
+  background-color: $homeBGColor;
+
+  .title {
+    font-size: 5rem;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .intro {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 120px;
+  }
+
+  .content {
+
+    [class*='col-'] {
+      padding-left: 54px;
+      padding-right: 54px;
+
+      &:first-child {
+        background-image: url('../../assets/img/submit-large-HM-image.png');
+        background-repeat: no-repeat;
+      }
+
+      &:nth-child(2) {
+        background-image: url('../../assets/img/generate-large-HM-image.png');
+        background-repeat: no-repeat;
+      }
+
+
+    }
+
+    .section-header {
+      font-size: 2.571rem;
+      padding-top: 20px;
+    }
+
+    p {
+      margin-top: 30px;
+      font-size: 1.429rem;
+    }
+  }
+}
+

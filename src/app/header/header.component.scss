@@ -1,12 +1,30 @@
+@import '../../assets/partials/variables.scss';
+
 .header-wrapper {
-  padding: 30px;
-  border-bottom: 2px solid #2a7596;
+  padding: 34px 0;
+  border-bottom: 2px solid $darkBlue;
 
   .logo {
     text-align: center;
   }
 
   .main-nav {
-    text-align: right;
+    padding-top: 15px;
+
+    ul {
+      float: right;
+      // margin-right: 120px;
+
+      li {
+        &.active {
+
+          a {
+            padding-left: 20px;
+            padding-right: 20px;
+            color: white;
+          }
+        }
+      }
+    }
   }
 }
