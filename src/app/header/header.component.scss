@@ -4,23 +4,61 @@
   padding: 34px 0;
   border-bottom: 2px solid $darkBlue;
 
+  @media (max-width: 991px) {
+    padding: 30px 20px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0;
+  }
+
   .logo {
     text-align: center;
+
+    @media (max-width: 991px) {
+      text-align: left;
+    }
+
+    @media (max-width: 767px) {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      img {
+        width: 75%;
+      }
+    }
   }
 
   .main-nav {
     padding-top: 15px;
 
+    @media (max-width: 767px) {
+      background-color: $mainNavBGColor;
+      padding: 5px 14px;
+      overflow: hidden;
+    }
+
     ul {
       float: right;
-      // margin-right: 120px;
+
+      @media (max-width: 767px) {
+        padding: 0;
+        text-align: center;
+      }
 
       li {
-        &.active {
 
+        &.active {
           a {
             padding-left: 20px;
             padding-right: 20px;
+            color: white;
+          }
+        }
+
+        a {
+          @media (max-width: 767px) {
             color: white;
           }
         }
