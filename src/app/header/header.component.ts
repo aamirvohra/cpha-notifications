@@ -1,20 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { AppURLRepo } from '../../utils/app-url-repo';
+import { ModalService } from '../modal-service.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   public notificationManagerLogo: string;
 
-  constructor() {
+  constructor(private modalService: ModalService) {
     this.notificationManagerLogo = AppURLRepo.NOTIFICATIONS_MANAGER_LOGO;
   }
 
-  ngOnInit() {
+  displaySignInForm() {
+    this.modalService.displaySignInForm();
+  }
+
+  displaySignUpForm() {
+    this.modalService.displaySignUpForm();
   }
 
 }

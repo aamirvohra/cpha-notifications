@@ -1,0 +1,30 @@
+<section class="login-wrapper">
+  <form [formGroup]="loginForm">
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="userId" placeholder="User Name">
+    </div>
+
+    <div class="form-group">
+      <input type="password" class="form-control" formControlName="password" placeholder="Password">
+    </div>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> Remember Me
+      </label>
+    </div>
+
+    <div>
+      <button (click)="processLogin()" type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </form>
+
+  <div class="forgot">
+    Forgot your password or username?
+  </div>
+
+  <div class="sign-up">
+    <span class="bold">Not yet registered? </span>
+    <a>Sign up</a>
+  </div>
+</section>
