@@ -1,12 +1,42 @@
 <section class="header-wrapper">
   <div class="row">
     <div class="col-md-3 col-md-push-8 col-sm-5 col-sm-push-7 main-nav">
-      <ul class="nav nav-pills">
+      <ul *ngIf="false" class="nav nav-pills pre-login-menu">
         <li role="presentation">
           <a (click)="displaySignInForm()">Sign In</a>
         </li>
         <li class="active" role="presentation">
           <a>Register</a>
+        </li>
+        <li role="presentation">
+          <a>EN</a>
+        </li>
+      </ul>
+
+      <ul class="nav nav-pills loggedin-menu">
+        <li role="presentation" class="dropdown" dropdown>
+          <img class="profile-icon" [src]="profileIcon">
+
+          <a dropdownToggle class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Manufacturer #4564
+            <img [src]="dropdownIcon">
+          </a>
+
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li>
+              <a class="dropdown-item">
+                <img [src]="settingIcon">Acccount Settings
+              </a>
+            </li>
+            <li>
+              <a class="logout-initiator dropdown-item" (click)="processLogout()">
+                <img [src]="signoutIcon">Sign Out
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li role="presentation">
+          <a>Contact Us</a>
         </li>
         <li role="presentation">
           <a>EN</a>

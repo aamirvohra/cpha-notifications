@@ -8,8 +8,9 @@ import { APP_ROUTES } from './app-routes';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule, BsDropdownModule } from 'ngx-bootstrap';
 import { ModalService } from './modal-service.service';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,14 @@ import { ModalService } from './modal-service.service';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    ReportsComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     APP_ROUTES,
     ModalModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ],
   providers: [
     ModalService,
