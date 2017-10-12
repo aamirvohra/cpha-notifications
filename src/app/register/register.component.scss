@@ -1,0 +1,17 @@
+.registration-wrapper {
+  input {
+    font-size: 1.286rem;
+    color: #444444;
+    height: 50px;
+  }
+
+  input::-moz-placeholder {
+    font-size: 1.286rem;
+    color: #999999;
+  }
+
+  button {
+    width: 300px;
+    color: white;
+  }
+}
