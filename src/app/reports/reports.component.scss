@@ -26,4 +26,35 @@
   .filters {
     text-align: right;
   }
+
+  .reports-table {
+    padding: 20px 10px;
+    border: 1px solid $darkGrey;
+    border-radius: 5px;
+    background-color: white;
+  }
+
+  .paginator {
+    text-align: center;
+
+    /deep/ .pagination {
+      margin: 10px 0;
+      font-size: 1rem;
+
+      li {
+        &.active {
+          a {
+            color: #666666;
+            background-color: #EEEEEE;
+            border-color: #DDDDDD;
+          }
+        }
+
+        a {
+          color: $darkBlue;
+        }
+      }
+    }
+
+  }
 }

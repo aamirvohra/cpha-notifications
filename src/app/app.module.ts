@@ -8,9 +8,10 @@ import { APP_ROUTES } from './app-routes';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ModalModule, BsDropdownModule } from 'ngx-bootstrap';
-import { ModalService } from './modal-service.service';
+import { ModalModule, BsDropdownModule, PaginationModule } from 'ngx-bootstrap';
+import { ModalService } from './services/modal-service.service';
 import { ReportsComponent } from './reports/reports.component';
+import { ReportsService } from './services/reports.service';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,11 @@ import { ReportsComponent } from './reports/reports.component';
     APP_ROUTES,
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
+    PaginationModule.forRoot(),
   ],
   providers: [
     ModalService,
+    ReportsService,
   ],
   bootstrap: [AppComponent]
 })
