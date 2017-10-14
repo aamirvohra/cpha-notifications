@@ -22,4 +22,6 @@ export class AppURLRepo {
 
   public static readonly SIGNOUT_ICON: string = AppURLRepo.IMG_URL + '/' + 'sign-out-icon.png';
 
+  public static readonly FILTER_ICON: string = AppURLRepo.IMG_URL + '/' + 'filter-icon.png';
+
 }

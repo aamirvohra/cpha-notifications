@@ -70,6 +70,7 @@
       .dropdown {
         a {
           background-color: inherit;
+          padding: 10px 7px;
         }
 
         a:hover {
@@ -79,13 +80,13 @@
 
       .dropdown-menu {
         top: 120%;
-        padding: 30px 5px;
+        padding: 15px 5px;
         min-width: 225px;
         right: 20px;
         left: auto;
 
         li {
-          margin-bottom: 20px;
+          margin-bottom: 7px;
 
           &:last-child {
             margin-bottom: 0;
@@ -93,6 +94,7 @@
 
           a {
             color: $hyperLink;
+            font-weight: bold;
 
             img {
               padding-right: 10px;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppURLRepo } from '../../utils/app-url-repo';
 
 @Component({
   selector: 'app-reports',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportsComponent {
 
-  constructor() { }
+  public filterIcon: string;
+
+  constructor() {
+    this.filterIcon = AppURLRepo.FILTER_ICON;
+  }
 
 }

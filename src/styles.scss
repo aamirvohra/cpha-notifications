@@ -52,4 +52,9 @@ body {
   bold {
     font-weight: bold;
   }
+
+  .btn-primary {
+    background-color: $primaryButtonColor;
+    color: white;
+  }
 }
