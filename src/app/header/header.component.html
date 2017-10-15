@@ -1,7 +1,7 @@
-<section class="header-wrapper">
+<section class="header-wrapper" [ngClass]="{ 'logged-in': loggedInUser }">
   <div class="row">
-    <div class="col-md-3 col-md-push-8 col-sm-5 col-sm-push-7 main-nav">
-      <ul *ngIf="false" class="nav nav-pills pre-login-menu">
+    <div class="col-md-4 col-md-push-8 col-sm-5 col-sm-push-7 main-nav">
+      <ul *ngIf="!loggedInUser" class="nav nav-pills pre-login-menu">
         <li role="presentation">
           <a (click)="displaySignInForm()">Sign In</a>
         </li>
@@ -13,12 +13,12 @@
         </li>
       </ul>
 
-      <ul class="nav nav-pills loggedin-menu">
+      <ul *ngIf="loggedInUser" class="nav nav-pills loggedin-menu">
         <li role="presentation" class="dropdown" dropdown>
           <img class="profile-icon" [src]="profileIcon">
 
           <a dropdownToggle class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Manufacturer #4564
+            <span class="userId">Manufacturer #4564</span>
             <img [src]="dropdownIcon">
           </a>
 
@@ -44,7 +44,7 @@
       </ul>
     </div>
 
-    <div class="col-md-4 col-md-pull-3 col-md-offset-4 col-sm-7 col-sm-pull-5 logo">
+    <div class="col-md-4 col-md-pull-4 col-sm-7 col-sm-pull-5 logo" [ngClass]="{ 'align-center, col-md-offset-4': !loggedInUser }">
       <img [src]="notificationManagerLogo" alt="logo"/>
     </div>
   </div>

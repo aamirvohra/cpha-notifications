@@ -4,6 +4,22 @@
   padding: 34px 0;
   border-bottom: 2px solid $contentBorderColor;
 
+  &.logged-in {
+    padding: 34px 50px;
+
+    @media (max-width: 991px) {
+      padding: 30px 20px;
+    }
+
+    .main-nav {
+
+      .loggedin-menu {
+        float: right;
+      }
+    }
+
+  }
+
   @media (max-width: 991px) {
     padding: 30px 20px;
   }
@@ -13,7 +29,7 @@
   }
 
   .logo {
-    text-align: center;
+    text-align: left;
 
     @media (max-width: 991px) {
       text-align: left;
@@ -32,6 +48,7 @@
 
   .main-nav {
     padding-top: 15px;
+
 
     @media (max-width: 767px) {
       background-color: $mainNavBGColor;
@@ -66,11 +83,19 @@
     }
 
     ul.loggedin-menu {
-
+      @media (max-width: 991px) {
+        float: right;
+      }
       .dropdown {
         a {
           background-color: inherit;
           padding: 10px 7px;
+
+          .userId {
+            @media (max-width: 991px) {
+              display: none;
+            }
+          }
         }
 
         a:hover {

@@ -1,16 +1,18 @@
 <section class="report-wrapper">
   <div class="row">
-    <h1 class="title">Reports</h1>
+    <div class="col-md-12 col-sm-12">
+      <h1 class="title">Reports</h1>
+    </div>
   </div>
 
   <div class="row">
-    <div class="title-description">
+    <div class="col-md-12 col-sm-12 title-description">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu porttitor dolor. Ut neque odio, lobortis ac metus in, fringilla tempus mi
     </div>
   </div>
 
   <div class="row">
-    <div class="action-buttons-row col-md-10 no-padding">
+    <div class="action-buttons-row col-md-10 col-sm-10">
       <div>
         <button class="btn btn-primary">Generate Report</button>
       </div>
@@ -24,13 +26,13 @@
       </div>
     </div>
 
-    <div class="col-md-2 filters">
+    <div class="col-md-2 col-sm-2 filters">
       <img [src]="filterIcon">
       <span>Show Filters</span>
     </div>
   </div>
 
-  <div class="row reports-table">
+  <div class="reports-table">
     <table class="table table-striped">
       <thead>
       <tr>
@@ -45,44 +47,44 @@
       </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let report of reportList">
-          <td>
-            <input type="checkbox">
-          </td>
-          <td>
-            {{report.product_name}}
-          </td>
+      <tr *ngFor="let report of reportList">
+        <td>
+          <input type="checkbox">
+        </td>
+        <td>
+          {{report.product_name}}
+        </td>
 
-          <td>
-            {{report.request_type}}
-          </td>
+        <td>
+          {{report.request_type}}
+        </td>
 
-          <td>
-            {{report.attachment}}
-          </td>
+        <td>
+          {{report.attachment}}
+        </td>
 
-          <td>
-            {{report.submitted_by}}
-          </td>
+        <td>
+          {{report.submitted_by}}
+        </td>
 
-          <td>
-            {{report.date_submitted}}
-          </td>
+        <td>
+          {{report.date_submitted}}
+        </td>
 
-          <td>
-            {{report.distribution_method}}
-          </td>
+        <td>
+          {{report.distribution_method}}
+        </td>
 
-          <td>
-            <i class="fa fa-external-link" aria-hidden="true"></i>
-          </td>
-        </tr>
+        <td>
+          <i class="fa fa-external-link" aria-hidden="true"></i>
+        </td>
+      </tr>
       </tbody>
     </table>
   </div>
 
   <div class="paginator row">
-    <div class="">
+    <div class="col-md-12 col-sm-12">
       <pagination [boundaryLinks]="true" [totalItems]="125" [maxSize]="30"
                   firstText="&laquo;" lastText="&raquo;" itemsPerPage="25" [directionLinks]="false"
                   (pageChanged)="pageChanged($event)"></pagination>
