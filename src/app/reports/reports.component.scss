@@ -7,24 +7,31 @@
     padding: 30px 20px;
   }
 
-  .action-buttons-row {
-    div {
-      display: inline-block;
-    }
-  }
-
   > div {
     margin-bottom: 20px;
   }
 
-  .btn {
-    padding: 10px 20px;
-  }
+  .action-buttons-row {
+    .btn {
+      padding: 10px 20px;
+    }
 
 
-  .btn-default {
-    border-color: $primaryButtonColor;
-    color: $primaryButtonColor;
+    .btn-default {
+      border-color: $primaryButtonColor;
+      color: $primaryButtonColor;
+    }
+
+    > div {
+      display: inline-block;
+      margin-top: 10px;
+      margin-right: 5px;
+      // margin-bottom: 10px;
+
+      button {
+        width: 160px;
+      }
+    }
   }
 
   .filters {
@@ -33,6 +40,13 @@
   }
 
   .reports-table {
+    margin-left: 0;
+    margin-right: 0;
+
+    @media (max-width: 767px) {
+      overflow: scroll;
+      overflow: -moz-scrollbars-horizontal;
+    }
 
     > div {
       padding: 0;

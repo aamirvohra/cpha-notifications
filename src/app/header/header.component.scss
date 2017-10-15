@@ -11,6 +11,10 @@
       padding: 30px 20px;
     }
 
+    @media (max-width: 767px) {
+      padding: 10px 20px;
+    }
+
     .main-nav {
 
       .loggedin-menu {
@@ -83,6 +87,13 @@
     }
 
     ul.loggedin-menu {
+
+      a {
+        @media (max-width: 767px) {
+          color: white;
+        }
+      }
+
       @media (max-width: 991px) {
         float: right;
       }
@@ -109,6 +120,11 @@
         min-width: 225px;
         right: 20px;
         left: auto;
+
+        @media (max-width: 767px) {
+          top: 0;
+          padding: 15px 5px;
+        }
 
         li {
           margin-bottom: 7px;

@@ -12,7 +12,7 @@
   </div>
 
   <div class="row">
-    <div class="action-buttons-row col-md-10 col-sm-10">
+    <div class="action-buttons-row col-md-10 col-sm-10 col-xs-12">
       <div>
         <button class="btn btn-primary">Generate Report</button>
       </div>
@@ -26,61 +26,63 @@
       </div>
     </div>
 
-    <div class="col-md-2 col-sm-2 filters">
+    <div class="col-md-2 col-md-offset-0 col-sm-2 col-sm-offset-0 col-xs-4 col-xs-offset-8 filters">
       <img [src]="filterIcon">
       <span>Show Filters</span>
     </div>
   </div>
 
-  <div class="reports-table">
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th><input type="checkbox"></th>
-        <th>Product Name</th>
-        <th>Request Type</th>
-        <th>Attachment</th>
-        <th>Submitted By</th>
-        <th>Date Submitted</th>
-        <th>Distribution Method</th>
-        <th>&nbsp;</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let report of reportList">
-        <td>
-          <input type="checkbox">
-        </td>
-        <td>
-          {{report.product_name}}
-        </td>
+  <div class="row reports-table">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th><input type="checkbox"></th>
+          <th>Product Name</th>
+          <th>Request Type</th>
+          <th>Attachment</th>
+          <th>Submitted By</th>
+          <th>Date Submitted</th>
+          <th>Distribution Method</th>
+          <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let report of reportList">
+          <td>
+            <input type="checkbox">
+          </td>
+          <td>
+            {{report.product_name}}
+          </td>
 
-        <td>
-          {{report.request_type}}
-        </td>
+          <td>
+            {{report.request_type}}
+          </td>
 
-        <td>
-          {{report.attachment}}
-        </td>
+          <td>
+            {{report.attachment}}
+          </td>
 
-        <td>
-          {{report.submitted_by}}
-        </td>
+          <td>
+            {{report.submitted_by}}
+          </td>
 
-        <td>
-          {{report.date_submitted}}
-        </td>
+          <td>
+            {{report.date_submitted}}
+          </td>
 
-        <td>
-          {{report.distribution_method}}
-        </td>
+          <td>
+            {{report.distribution_method}}
+          </td>
 
-        <td>
-          <i class="fa fa-external-link" aria-hidden="true"></i>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+          <td>
+            <i class="fa fa-external-link" aria-hidden="true"></i>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div class="paginator row">
