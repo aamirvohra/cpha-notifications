@@ -11,6 +11,7 @@ const ROUTES: Routes = [
     path: 'reports',
     component: ReportsComponent,
   },
+
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(ROUTES);

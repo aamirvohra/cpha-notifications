@@ -1,26 +1,38 @@
-<section class="registration-wrapper">
-  <form [formGroup]="registerForm">
-    <div class="form-group">
-      <input class="form-control" type="text" formControlName="firstName" placeholder="First Name">
+<div class="registration-wrapper">
+  <div class="modal-header">
+    <h4 class="modal-title">Sign Up</h4>
+    <img  (click)="close()" [src]="closeIcon" alt="Close">
+  </div>
 
-      <input class="form-control" type="text" formControlName="lastName" placeholder="Last Name">
-    </div>
+  <div class="modal-body">
+    <form [formGroup]="registerForm">
+      <div class="form-group split">
+        <div>
+          <input class="form-control" type="text" formControlName="firstName" placeholder="First Name">
+        </div>
 
-    <div class="form-group">
-      <input class="form-control" type="email" formControlName="email" placeholder="Email">
-    </div>
+        <div>
+          <input class="form-control" type="text" formControlName="lastName" placeholder="Last Name">
+        </div>
+      </div>
 
-    <div class="form-group">
-      <input class="form-control" type="password" formControlName="password" placeholder="Password (4-20 Characters)">
-    </div>
+      <div class="form-group">
+        <input class="form-control" type="email" formControlName="email" placeholder="Email">
+      </div>
 
-    <div class="form-group">
-      <input class="form-control" type="password" formControlName="confirm-password" placeholder="Confirm Password">
-    </div>
+      <div class="form-group">
+        <input class="form-control" type="password" formControlName="password" placeholder="Password (4-20 Characters)">
+      </div>
 
-    <div>
-      <button (click)="register()" type="submit" class="btn btn-default">Register</button>
-    </div>
+      <div class="buttons">
+        <button (click)="register()" type="submit" class="btn btn-default">Register</button>
+      </div>
 
-  </form>
-</section>
+      <div class="sign-in">
+        <span>Already registered? </span>
+        <a (click)="displaySignIn()">Sign in</a>
+      </div>
+
+    </form>
+  </div>
+</div>

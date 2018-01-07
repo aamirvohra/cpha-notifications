@@ -38,17 +38,25 @@ export class HeaderComponent implements OnInit {
           this.loggedInUser = false;
         }
       }
-    )
+    );
 
   }
 
   displaySignInForm() {
-    this.modalService.displaySignInForm();
+    this.modalService.displaySignInForm(true);
   }
 
   displaySignUpForm() {
-    this.modalService.displaySignUpForm();
+    this.modalService.displaySignUpForm(true);
   }
+
+  // hideSignInForm() {
+  //   this.modalService.displaySignInForm(false);
+  // }
+  //
+  // hideSignUpForm() {
+  //   this.modalService.displaySignUpForm(false);
+  // }
 
   processLogout() {
 

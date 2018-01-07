@@ -1,19 +1,85 @@
+@import '../../assets/partials/variables.scss';
+
 .login-wrapper {
+  color: #444444;
 
-  input {
-    font-size: 1.286rem;
-    color: #444444;
-    height: 50px;
+  .modal-header {
+    padding: 10px;
+
+    .modal-title {
+      text-align: center;
+      color: #444444;
+      font-size: 1.571rem;
+    }
+
+    img {
+      position: absolute;
+      top: 19px;
+      right: 15px;
+    }
   }
 
-  input::-moz-placeholder {
-    font-size: 1.286rem;
-    color: #999999;
-  }
 
-  button {
-    width: 300px;
-    color: white;
-  }
+  .modal-body {
+    padding: 60px 30px 40px;
 
+    .form-group {
+      &:first-child {
+        margin-bottom: 30px;
+      }
+
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      font-size: 1.286rem;
+      height: 50px;
+    }
+
+    input[type="checkbox"] {
+      top: -4px;
+    }
+
+    input::-moz-placeholder {
+      font-size: 1.286rem;
+      color: #999999;
+    }
+
+    .checkbox {
+      font-size: 1.071rem;
+    }
+
+    .buttons {
+      margin-top: 50px;
+      text-align: center;
+      margin-bottom: 15px;
+
+      button {
+        width: 300px;
+        background-color: $primaryButtonColor;
+        color: white;
+        height: 46px;
+        font-size: 1.286rem;
+      }
+    }
+
+    .forgot {
+      text-align: center;
+      margin-top: 15px;
+      margin-bottom: 30px;
+      font-size: 1.071rem;
+    }
+
+    .sign-up {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 1.286rem;
+      color: #000000;
+
+      span {
+        font-weight: bold;
+      }
+    }
+  }
 }

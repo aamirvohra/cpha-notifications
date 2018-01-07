@@ -24,4 +24,6 @@ export class AppURLRepo {
 
   public static readonly FILTER_ICON: string = AppURLRepo.IMG_URL + '/' + 'filter-icon.png';
 
+  public static readonly CLOSE_ICON: string = AppURLRepo.IMG_URL + '/' + 'x-close.png';
+
 }

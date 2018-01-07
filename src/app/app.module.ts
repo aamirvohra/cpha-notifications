@@ -19,9 +19,13 @@ import { ReportsService } from './services/reports.service';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent,
     RegisterComponent,
     ReportsComponent,
+    LoginComponent,
+  ],
+  entryComponents: [
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,12 +12,12 @@ export class ModalService {
     this._displaySignUpForm = new BehaviorSubject(false);
   }
 
-  public displaySignInForm() {
-    this._displaySignInForm.next(true);
+  public displaySignInForm(display: boolean) {
+    this._displaySignInForm.next(display);
   }
 
-  public displaySignUpForm() {
-    this._displaySignUpForm.next(true);
+  public displaySignUpForm(display: boolean) {
+    this._displaySignUpForm.next(display);
   }
 
 }
