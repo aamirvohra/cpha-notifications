@@ -67,4 +67,14 @@ body {
   .align-center {
     text-align: center;
   }
+
+  .modal.fade {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-dialog {
+    margin: 0;
+  }
 }

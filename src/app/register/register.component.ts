@@ -17,7 +17,7 @@ export class RegisterComponent {
 
 
   constructor(private fb: FormBuilder) {
-    this.registerForm =this.fb.group({
+    this.registerForm = this.fb.group({
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
       email: [null, Validators.required],

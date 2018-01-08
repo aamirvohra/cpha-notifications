@@ -16,12 +16,18 @@ export class AppComponent {
   public signInModalRef: BsModalRef;
   public registerModalRef: BsModalRef;
 
+  public modalOptions: any;
+
   constructor(private modalService: ModalService, private modal: BsModalService) {
+    this.modalOptions = {
+      ignoreBackdropClick: true,
+    };
+
     this.modalService._displaySignUpForm.subscribe(
       display => {
 
         if (display) {
-          this.registerModalRef = this.modal.show(RegisterComponent);
+          this.registerModalRef = this.modal.show(RegisterComponent, this.modalOptions);
 
           this.registerModalRef.content.displaySignIn = () => {
             this.closeRegisterModal();
@@ -47,7 +53,7 @@ export class AppComponent {
       display => {
         if (display) {
 
-          this.signInModalRef = this.modal.show(LoginComponent);
+          this.signInModalRef = this.modal.show(LoginComponent, this.modalOptions);
 
           // hide signin form
           this.signInModalRef.content.displaySignup = () => {

@@ -75,12 +75,22 @@
             padding-left: 20px;
             padding-right: 20px;
             color: white;
+            background-color: #005b7d;
+
+            &:hover {
+              background-color: #005b7d;
+            }
           }
         }
 
         a {
           @media (max-width: 767px) {
             color: white;
+          }
+
+          &:hover {
+            background-color: transparent;
+            cursor: pointer;
           }
         }
       }
