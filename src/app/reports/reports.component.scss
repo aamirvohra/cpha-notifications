@@ -13,7 +13,7 @@
 
   .action-buttons-row {
     .btn {
-      padding: 10px 20px;
+      padding: 7px 20px;
     }
 
 
@@ -42,6 +42,11 @@
   .reports-table {
     margin-left: 0;
     margin-right: 0;
+    padding: 20px;
+    border: 1px solid $darkGrey;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 0;
 
     @media (max-width: 767px) {
       overflow: scroll;
@@ -51,18 +56,35 @@
     > div {
       padding: 0;
     }
-    // padding: 20px 10px;
-    padding: 0;
-    border: 1px solid $darkGrey;
-    border-radius: 5px;
-    background-color: white;
 
     .table {
       // table-layout:fixed;
+      margin-bottom: 0;
 
-       tr th:first-child,
+      .sort {
+        width: 7px;
+
+        &.up {
+          position: absolute;
+          top: 10px;
+        }
+
+        &.down {
+
+        }
+      }
+
+      th {
+        span {
+          padding-right: 30px;
+        }
+
+        div {
+          display: inline-block;
+        }
+      }
+
        tr th:last-child,
-       tr td:first-child,
        tr td:last-child {
         width: 50px;
         min-width: 50px;
@@ -78,6 +100,7 @@
 
   .paginator {
     text-align: center;
+    margin-bottom: 0;
 
     /deep/ .pagination {
       margin: 10px 0;

@@ -26,4 +26,6 @@ export class AppURLRepo {
 
   public static readonly CLOSE_ICON: string = AppURLRepo.IMG_URL + '/' + 'x-close.png';
 
+  public static readonly FILE_ICON: string = AppURLRepo.IMG_URL + '/' + 'file-icon.png';
+
 }

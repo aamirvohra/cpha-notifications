@@ -21,14 +21,14 @@
         <button class="btn btn-primary">Submit a Lorem</button>
       </div>
 
-      <div>
-        <button class="btn btn-default">Archive Notification</button>
-      </div>
+      <!--<div>-->
+        <!--<button class="btn btn-default">Archive Notification</button>-->
+      <!--</div>-->
     </div>
 
     <div class="col-md-2 col-md-offset-0 col-sm-2 col-sm-offset-0 col-xs-4 col-xs-offset-8 filters">
       <img [src]="filterIcon">
-      <span>Show Filters</span>
+      <a>Show Filters</a>
     </div>
   </div>
 
@@ -37,21 +37,53 @@
       <table class="table table-striped">
         <thead>
         <tr>
-          <th><input type="checkbox"></th>
-          <th>Product Name</th>
-          <th>Request Type</th>
-          <th>Attachment</th>
-          <th>Submitted By</th>
-          <th>Date Submitted</th>
-          <th>Distribution Method</th>
+          <th>
+            <span>Product Name</span>
+            <div>
+              <img class="sort up" [src]="upIcon" alt="Sort Ascending">
+              <img class="sort down" [src]="downIcon" alt="Sort Descending">
+            </div>
+          </th>
+          <th>
+            <span>Request Type</span>
+            <div>
+              <img class="sort up" [src]="upIcon" alt="Sort Ascending">
+              <img class="sort down" [src]="downIcon" alt="Sort Descending">
+            </div>
+          </th>
+          <th>
+            <span>Attachment</span>
+            <div>
+              <img class="sort up" [src]="upIcon" alt="Sort Ascending">
+              <img class="sort down" [src]="downIcon" alt="Sort Descending">
+            </div>
+          </th>
+          <th>
+            <span>Submitted By</span>
+            <div>
+              <img class="sort up" [src]="upIcon" alt="Sort Ascending">
+              <img class="sort down" [src]="downIcon" alt="Sort Descending">
+            </div>
+          </th>
+          <th>
+            <span>Date Submitted</span>
+            <div>
+              <img class="sort up" [src]="upIcon" alt="Sort Ascending">
+              <img class="sort down" [src]="downIcon" alt="Sort Descending">
+            </div>
+          </th>
+          <th>
+            <span>Distribution Method</span>
+            <div>
+              <img class="sort up" [src]="upIcon" alt="Sort Ascending">
+              <img class="sort down" [src]="downIcon" alt="Sort Descending">
+            </div>
+          </th>
           <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let report of reportList">
-          <td>
-            <input type="checkbox">
-          </td>
           <td>
             {{report.product_name}}
           </td>
@@ -77,7 +109,7 @@
           </td>
 
           <td>
-            <i class="fa fa-external-link" aria-hidden="true"></i>
+            <img [src]="fileIcon" alt="">
           </td>
         </tr>
         </tbody>
