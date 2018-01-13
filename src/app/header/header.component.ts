@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   public settingIcon: string;
   public signoutIcon: string;
   public loggedInUser: boolean;
+  private isHomeRouteActivated: boolean;
 
   constructor(private modalService: ModalService,
               private router: Router) {
@@ -33,9 +34,11 @@ export class HeaderComponent implements OnInit {
       (event: NavigationEnd) => {
         if (event.url !== '/') {
           this.loggedInUser = true;
+          this.isHomeRouteActivated = true;
         }
         else {
           this.loggedInUser = false;
+          this.isHomeRouteActivated = false;
         }
       }
     );

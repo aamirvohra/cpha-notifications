@@ -28,4 +28,8 @@ export class AppURLRepo {
 
   public static readonly FILE_ICON: string = AppURLRepo.IMG_URL + '/' + 'file-icon.png';
 
+  public static readonly SEARCH_ICON: string = AppURLRepo.IMG_URL + '/' + 'search-icon.png';
+
+  public static readonly RESET_ICON: string = AppURLRepo.IMG_URL + '/' + 'reset-icon.png';
+
 }

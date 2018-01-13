@@ -33,7 +33,11 @@
   }
 
   .logo {
-    text-align: center;
+    text-align: left;
+
+    &.align-center {
+      text-align: center !important;
+    }
 
     @media (max-width: 991px) {
       text-align: left;

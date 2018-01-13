@@ -20,16 +20,68 @@
       <div>
         <button class="btn btn-primary">Submit a Lorem</button>
       </div>
-
-      <!--<div>-->
-        <!--<button class="btn btn-default">Archive Notification</button>-->
-      <!--</div>-->
     </div>
 
     <div class="col-md-2 col-md-offset-0 col-sm-2 col-sm-offset-0 col-xs-4 col-xs-offset-8 filters">
-      <img [src]="filterIcon">
-      <a>Show Filters</a>
+      <a (click)="toggleFilters()">
+        <img [src]="filterIcon">
+        {{ filtersVisible ? 'Close Filters' : 'Show Filters' }}</a>
     </div>
+  </div>
+
+  <div *ngIf="filtersVisible" class="row">
+    <div class="col-sm-12">
+      <hr>
+    </div>
+
+    <form class="report-form" [formGroup]="reportForm">
+      <div class="col-sm-12">
+
+        <div class="form-group col-sm-2 search">
+          <label for="search">Search</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="search" placeholder="Product Name" formControlName="search">
+            <div class="input-group-addon">
+              <img [src]="searchIcon">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-sm-3 req-type">
+          <label for="req-type">Show</label>
+          <select class="form-control" id="req-type" formControlName="requestType">
+            <option value="null">All Request Types</option>
+          </select>
+        </div>
+
+        <div class="form-group col-sm-3 .distibution-method">
+          <label for="distribution-method">Show</label>
+          <select class="form-control" id="distribution-method" formControlName="distributionMethods">
+            <option value="null">All Distribution Methods</option>
+          </select>
+        </div>
+
+        <div class="form-group col-sm-3 date-range">
+          <label for="dateRange">Date Range</label>
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i (click)="displayCalendar()" class="fa fa-calendar"></i>
+            </div>
+            <input #calendar type="text" class="form-control" id="dateRange" formControlName="dateRange"
+                   (selected)="selectedDate($event, daterange)" (cancelDaterangepicker)="clearDateRange($event)" daterangepicker>
+          </div>
+        </div>
+
+        <div class="form-group col-sm-1 reset-filter">
+        <span (click)="resetFilters($event)">
+          <button class="btn-link" type="button">
+            <img [src]="resetIcon">
+            Reset Filters</button>
+        </span>
+        </div>
+
+      </div>
+    </form>
   </div>
 
   <div class="row reports-table">
@@ -40,43 +92,43 @@
           <th>
             <span>Product Name</span>
             <div>
-              <img class="sort up" [src]="upIcon" alt="Sort Ascending">
-              <img class="sort down" [src]="downIcon" alt="Sort Descending">
+              <img class="sort up" [src]="upIcon">
+              <img class="sort down" [src]="downIcon">
             </div>
           </th>
           <th>
             <span>Request Type</span>
             <div>
-              <img class="sort up" [src]="upIcon" alt="Sort Ascending">
-              <img class="sort down" [src]="downIcon" alt="Sort Descending">
+              <img class="sort up" [src]="upIcon">
+              <img class="sort down" [src]="downIcon">
             </div>
           </th>
           <th>
             <span>Attachment</span>
             <div>
-              <img class="sort up" [src]="upIcon" alt="Sort Ascending">
-              <img class="sort down" [src]="downIcon" alt="Sort Descending">
+              <img class="sort up" [src]="upIcon">
+              <img class="sort down" [src]="downIcon">
             </div>
           </th>
           <th>
             <span>Submitted By</span>
             <div>
-              <img class="sort up" [src]="upIcon" alt="Sort Ascending">
-              <img class="sort down" [src]="downIcon" alt="Sort Descending">
+              <img class="sort up" [src]="upIcon">
+              <img class="sort down" [src]="downIcon">
             </div>
           </th>
           <th>
             <span>Date Submitted</span>
             <div>
-              <img class="sort up" [src]="upIcon" alt="Sort Ascending">
-              <img class="sort down" [src]="downIcon" alt="Sort Descending">
+              <img class="sort up" [src]="upIcon">
+              <img class="sort down" [src]="downIcon">
             </div>
           </th>
           <th>
             <span>Distribution Method</span>
             <div>
-              <img class="sort up" [src]="upIcon" alt="Sort Ascending">
-              <img class="sort down" [src]="downIcon" alt="Sort Descending">
+              <img class="sort up" [src]="upIcon">
+              <img class="sort down" [src]="downIcon">
             </div>
           </th>
           <th>&nbsp;</th>

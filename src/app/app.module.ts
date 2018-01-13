@@ -12,6 +12,7 @@ import { ModalModule, BsDropdownModule, PaginationModule } from 'ngx-bootstrap';
 import { ModalService } from './services/modal-service.service';
 import { ReportsComponent } from './reports/reports.component';
 import { ReportsService } from './services/reports.service';
+import { Daterangepicker } from 'ng2-daterangepicker';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ReportsService } from './services/reports.service';
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
     PaginationModule.forRoot(),
+    Daterangepicker,
   ],
   providers: [
     ModalService,

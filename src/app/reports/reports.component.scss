@@ -7,6 +7,10 @@
     padding: 30px 20px;
   }
 
+  hr {
+    border-color: #d1d1d1;
+  }
+
   > div {
     margin-bottom: 20px;
   }
@@ -25,7 +29,7 @@
     > div {
       display: inline-block;
       margin-top: 10px;
-      margin-right: 5px;
+      margin-right: 7px;
       // margin-bottom: 10px;
 
       button {
@@ -37,6 +41,60 @@
   .filters {
     text-align: right;
     padding-top: 15px;
+    cursor: pointer;
+  }
+
+  .report-form {
+    .form-group {
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+
+    .search {
+      padding-right: 26px;
+
+      &:after {
+        position: absolute;
+        height: 56px;
+        top: 0;
+        background: #d1d1d1;
+        width: 1px;
+        right: 0;
+        content: "";
+      }
+    }
+
+    .req-type {
+      padding-left: 26px;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: #666666;
+      text-transform: uppercase;
+    }
+
+    .date-range {
+      .input-group-addon {
+        background-color: white;
+        border-right: 0;
+      }
+
+      input {
+        border-left: 0;
+      }
+    }
+
+    .reset-filter {
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 25px;
+      text-align: right;
+
+      .btn-link {
+        padding: 0;
+      }
+    }
   }
 
   .reports-table {
@@ -94,6 +152,7 @@
       td {
         word-wrap:break-word;
         word-break:break-all;
+        padding: 10px;
       }
     }
   }
@@ -117,6 +176,7 @@
 
         a {
           color: $darkBlue;
+          padding: 6px 15px;
         }
       }
     }
