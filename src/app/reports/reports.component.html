@@ -13,23 +13,23 @@
 
   <div class="row">
     <div class="action-buttons-row col-md-10 col-sm-10 col-xs-12">
-      <div>
+      <div class="col-md-2 col-sm-4 col-xs-6">
         <button class="btn btn-primary">Generate Report</button>
       </div>
 
-      <div>
+      <div class="col-md-2 col-sm-4 col-xs-6">
         <button class="btn btn-primary">Submit a Lorem</button>
       </div>
     </div>
 
-    <div class="col-md-2 col-md-offset-0 col-sm-2 col-sm-offset-0 col-xs-4 col-xs-offset-8 filters">
+    <div class="col-md-2 col-sm-2 hidden-xs filters">
       <a (click)="toggleFilters()">
         <img [src]="filterIcon">
         {{ filtersVisible ? 'Close Filters' : 'Show Filters' }}</a>
     </div>
   </div>
 
-  <div *ngIf="filtersVisible" class="row">
+  <div [ngClass]="{'hide': !filtersVisible}" class="row">
     <div class="col-sm-12">
       <hr>
     </div>
@@ -37,7 +37,7 @@
     <form class="report-form" [formGroup]="reportForm">
       <div class="col-sm-12">
 
-        <div class="form-group col-sm-2 search">
+        <div class="form-group col-md-2 col-sm-12 search">
           <label for="search">Search</label>
           <div class="input-group">
             <input type="text" class="form-control" id="search" placeholder="Product Name" formControlName="search">
@@ -47,21 +47,21 @@
           </div>
         </div>
 
-        <div class="form-group col-sm-3 req-type">
+        <div class="form-group col-md-3 col-sm-4 req-type">
           <label for="req-type">Show</label>
           <select class="form-control" id="req-type" formControlName="requestType">
             <option value="null">All Request Types</option>
           </select>
         </div>
 
-        <div class="form-group col-sm-3 .distibution-method">
+        <div class="form-group col-md-3 col-sm-4 distibution-method">
           <label for="distribution-method">Show</label>
           <select class="form-control" id="distribution-method" formControlName="distributionMethods">
             <option value="null">All Distribution Methods</option>
           </select>
         </div>
 
-        <div class="form-group col-sm-3 date-range">
+        <div class="form-group col-md-3 col-sm-4 date-range">
           <label for="dateRange">Date Range</label>
           <div class="input-group">
             <div class="input-group-addon">
@@ -72,7 +72,7 @@
           </div>
         </div>
 
-        <div class="form-group col-sm-1 reset-filter">
+        <div class="form-group col-md-1 col-sm-12 reset-filter">
         <span (click)="resetFilters($event)">
           <button class="btn-link" type="button">
             <img [src]="resetIcon">
@@ -131,7 +131,7 @@
               <img class="sort down" [src]="downIcon">
             </div>
           </th>
-          <th>&nbsp;</th>
+          <th class="file">&nbsp;</th>
         </tr>
         </thead>
         <tbody>
@@ -160,7 +160,7 @@
             {{report.distribution_method}}
           </td>
 
-          <td>
+          <td class="file">
             <img [src]="fileIcon" alt="">
           </td>
         </tr>
