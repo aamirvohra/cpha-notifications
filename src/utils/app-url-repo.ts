@@ -32,4 +32,8 @@ export class AppURLRepo {
 
   public static readonly RESET_ICON: string = AppURLRepo.IMG_URL + '/' + 'reset-icon.png';
 
+  public static readonly OK_ICON: string = AppURLRepo.IMG_URL + '/' + 'ok-check-icon.png';
+
+  public static readonly NO_BAR_ICON: string = AppURLRepo.IMG_URL + '/' + 'no-bar-icon.png';
+
 }

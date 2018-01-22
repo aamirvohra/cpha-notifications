@@ -13,6 +13,7 @@ import { ModalService } from './services/modal-service.service';
 import { ReportsComponent } from './reports/reports.component';
 import { ReportsService } from './services/reports.service';
 import { Daterangepicker } from 'ng2-daterangepicker';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { Daterangepicker } from 'ng2-daterangepicker';
     RegisterComponent,
     ReportsComponent,
     LoginComponent,
+    AccountComponent,
   ],
   entryComponents: [
     LoginComponent,
