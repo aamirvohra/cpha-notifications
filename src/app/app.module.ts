@@ -14,6 +14,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { ReportsService } from './services/reports.service';
 import { Daterangepicker } from 'ng2-daterangepicker';
 import { AccountComponent } from './account/account.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,12 @@ import { AccountComponent } from './account/account.component';
     ReportsComponent,
     LoginComponent,
     AccountComponent,
+    ContactFormComponent,
   ],
   entryComponents: [
     LoginComponent,
     RegisterComponent,
+    ContactFormComponent,
   ],
   imports: [
     BrowserModule,

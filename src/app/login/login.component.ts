@@ -25,7 +25,7 @@ export class LoginComponent {
   }
 
   processLogin() {
-    console.log('Login');
+    // console.log('Login');
   }
 
   close() {
