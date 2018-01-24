@@ -1,0 +1,48 @@
+.contact-form-wrapper {
+
+  .section-title {
+    margin-bottom: 20px;
+  }
+
+  h4 {
+    margin-top: 0;
+  }
+
+  .required-indicator {
+    &:after {
+      content: "*";
+      color: red;
+    }
+  }
+
+  .modal-header {
+    padding: 19px 20px;
+    .modal-title {
+      text-align: left;
+    }
+
+    img {
+      top: 26px
+    }
+  }
+
+  .modal-body {
+    padding: 30px 20px 40px;
+
+    input[type="text"], select {
+      height: 35px;
+      width: 275px;
+    }
+
+    .split {
+      input {
+        display: inline-block;
+        width: 53%;
+
+        &:last-child {
+          width: 46%;
+        }
+      }
+    }
+  }
+}

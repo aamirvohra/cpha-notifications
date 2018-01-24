@@ -26,7 +26,8 @@ export class AccountComponent {
   }
 
   protected editContactInformation() {
-    this.contactModalRef = this.modalService.show(ContactFormComponent, this.modalOptions);
+    this.contactModalRef = this.modalService.show(ContactFormComponent,
+      Object.assign({}, this.modalOptions, { class: 'contact-form-modal' }));
   }
 
 }

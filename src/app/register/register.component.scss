@@ -3,31 +3,7 @@
 .registration-wrapper {
   color: #444444;
 
-  .modal-header {
-    padding: 10px;
-    border-color: #CCCCCC;
-
-    .modal-title {
-      text-align: center;
-      color: #444444;
-      font-size: 1.571rem;
-    }
-
-    img {
-      position: absolute;
-      top: 19px;
-      right: 15px;
-    }
-  }
-
   .modal-body {
-    background-color: #FAFAFA;
-    padding: 60px 30px 40px;
-
-    @media (max-width: 767px) {
-      padding: 30px 15px;
-    }
-
     .form-group {
       margin-bottom: 20px;
 
@@ -37,55 +13,6 @@
         > div {
           margin-bottom: 20px;
         }
-      }
-
-      //&.split {
-      //  margin-bottom: 30px;
-      //
-      //  > div {
-      //    width: 49.5%;
-      //    display: inline-block;
-      //
-      //    @media (max-width: 767px) {
-      //      width: 100%;
-      //    }
-      //
-      //    &:first-child {
-      //      padding-right: 5px;
-      //    }
-      //
-      //    &:last-child {
-      //      padding-left: 5px;
-      //    }
-      //  }
-      //}
-    }
-
-    input {
-      font-size: 1.286rem;
-      height: 50px;
-
-      @media (max-width: 767px) {
-        height: 43px;
-      }
-    }
-
-    input::-moz-placeholder {
-      font-size: 1.286rem;
-      color: #999999;
-    }
-
-    .buttons {
-      text-align: center;
-      margin-top: 30px;
-      margin-bottom: 30px;
-
-      button {
-        width: 300px;
-        background-color: $primaryButtonColor;
-        color: white;
-        height: 46px;
-        font-size: 1.286rem;
       }
     }
 

@@ -4,7 +4,59 @@
     <img  (click)="close()" [src]="closeIcon" alt="Close">
   </div>
   <div class="modal-body">
+    <div class="section-title">
+      <h4>Business Address</h4>
+    </div>
     <form [formGroup]="contactInfoForm">
+      <div formGroupName="businessAddress">
+        <div class="row form-group">
+          <div class="col-sm-3">
+            <span class="required-indicator"></span>
+            <label for="address1">Street Address:</label>
+          </div>
+
+          <div class="col-sm-9 split">
+            <!--<div class="col-sm-6">-->
+              <input class="form-control" type="text" id="address1" formControlName="streetAddress" placeholder="Address Line 1">
+            <!--</div>-->
+
+            <!--<div class="col-sm-6">-->
+              <input class="form-control" type="text" formControlName="streetAddress2" placeholder="Address Line 2">
+            <!--</div>-->
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-sm-3">
+            <span class="required-indicator"></span>
+              <label for="city">City:</label>
+          </div>
+
+          <div class="col-sm-9">
+              <input class="form-control" id="city" type="text" formControlName="city" placeholder="City">
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-sm-3">
+            <span class="required-indicator"></span>
+            <label for="province">Province:</label>
+          </div>
+          <div class="col-sm-9">
+            <select class="form-control" id="province" type="text" formControlName="province" placeholder=""></select>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-sm-3">
+            <span class="required-indicator"></span>
+            <label for="postalCode">Postal Code:</label>
+          </div>
+          <div class="col-sm-9">
+            <input class="form-control" id="postalCode" type="text" formControlName="postalCode" placeholder="K0K 0K0">
+          </div>
+        </div>
+      </div>
     </form>
   </div>
 </div>
