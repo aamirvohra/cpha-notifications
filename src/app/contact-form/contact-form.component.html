@@ -1,62 +1,191 @@
 <div class="contact-form-wrapper">
   <div class="modal-header">
     <h4 class="modal-title">Contact Information</h4>
-    <img  (click)="close()" [src]="closeIcon" alt="Close">
+    <img (click)="close()" [src]="closeIcon" alt="Close">
   </div>
   <div class="modal-body">
-    <div class="section-title">
-      <h4>Business Address</h4>
-    </div>
     <form [formGroup]="contactInfoForm">
-      <div formGroupName="businessAddress">
-        <div class="row form-group">
-          <div class="col-sm-3">
-            <span class="required-indicator"></span>
-            <label for="address1">Street Address:</label>
-          </div>
 
-          <div class="col-sm-9 split">
-            <!--<div class="col-sm-6">-->
-              <input class="form-control" type="text" id="address1" formControlName="streetAddress" placeholder="Address Line 1">
-            <!--</div>-->
+      <div class="businessAddress">
+        <div class="section-title">
+          <h4>Business Address</h4>
+        </div>
 
-            <!--<div class="col-sm-6">-->
+        <div formGroupName="businessAddress">
+          <div class="row form-group">
+            <div class="col-sm-3">
+              <span class="required-indicator"></span>
+              <label for="business-address1">Street Address:</label>
+            </div>
+
+            <div class="col-sm-9 split">
+              <!--<div class="col-sm-6">-->
+              <input class="form-control" type="text" id="business-address1" formControlName="streetAddress"
+                     placeholder="Address Line 1">
+              <!--</div>-->
+
+              <!--<div class="col-sm-6">-->
               <input class="form-control" type="text" formControlName="streetAddress2" placeholder="Address Line 2">
-            <!--</div>-->
-          </div>
-        </div>
-
-        <div class="row form-group">
-          <div class="col-sm-3">
-            <span class="required-indicator"></span>
-              <label for="city">City:</label>
+              <!--</div>-->
+            </div>
           </div>
 
-          <div class="col-sm-9">
-              <input class="form-control" id="city" type="text" formControlName="city" placeholder="City">
-          </div>
-        </div>
+          <div class="row form-group">
+            <div class="col-sm-3">
+              <span class="required-indicator"></span>
+              <label for="business-city">City:</label>
+            </div>
 
-        <div class="row form-group">
-          <div class="col-sm-3">
-            <span class="required-indicator"></span>
-            <label for="province">Province:</label>
+            <div class="col-sm-9">
+              <input class="form-control" id="business-city" type="text" formControlName="city" placeholder="City">
+            </div>
           </div>
-          <div class="col-sm-9">
-            <select class="form-control" id="province" type="text" formControlName="province" placeholder=""></select>
-          </div>
-        </div>
 
-        <div class="row form-group">
-          <div class="col-sm-3">
-            <span class="required-indicator"></span>
-            <label for="postalCode">Postal Code:</label>
+          <div class="row form-group">
+            <div class="col-sm-3">
+              <span class="required-indicator"></span>
+              <label for="business-province">Province:</label>
+            </div>
+            <div class="col-sm-9">
+              <select class="form-control" id="business-province" type="text" formControlName="province" placeholder="">
+                <option value="null">Select</option>
+                <option *ngFor="let province of provinces" [value]="province.abbr">{{province.name}}</option>
+              </select>
+            </div>
           </div>
-          <div class="col-sm-9">
-            <input class="form-control" id="postalCode" type="text" formControlName="postalCode" placeholder="K0K 0K0">
+
+          <div class="row form-group">
+            <div class="col-sm-3">
+              <span class="required-indicator"></span>
+              <label for="business-postalCode">Postal Code:</label>
+            </div>
+            <div class="col-sm-9">
+              <input class="form-control" id="business-postalCode" type="text" formControlName="postalCode" placeholder="K0K 0K0">
+            </div>
           </div>
         </div>
       </div>
+
+      <div>
+        <hr>
+      </div>
+
+      <div class="mailingAddress">
+        <div class="section-title">
+          <h4>Mailing Address</h4>
+        </div>
+
+        <div formGroupName="mailingAddress">
+          <div class="checkbox">
+            <label for="sameBilling">
+              <input formControlName="sameAsBusiness" type="checkbox" id="sameBilling"> Same as above
+            </label>
+          </div>
+
+          <div *ngIf="!contactInfoForm.controls.mailingAddress.controls.sameAsBusiness.value">
+            <div class="row form-group">
+              <div class="col-sm-3">
+                <span class="required-indicator"></span>
+                <label for="mailing-address1">Street Address:</label>
+              </div>
+
+              <div class="col-sm-9 split">
+                <!--<div class="col-sm-6">-->
+                <input class="form-control" type="text" id="mailing-address1" formControlName="streetAddress"
+                       placeholder="Address Line 1">
+                <!--</div>-->
+
+                <!--<div class="col-sm-6">-->
+                <input class="form-control" type="text" formControlName="streetAddress2" placeholder="Address Line 2">
+                <!--</div>-->
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-sm-3">
+                <span class="required-indicator"></span>
+                <label for="mailing-city">City:</label>
+              </div>
+
+              <div class="col-sm-9">
+                <input class="form-control" id="mailing-city" type="text" formControlName="city" placeholder="City">
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-sm-3">
+                <span class="required-indicator"></span>
+                <label for="mailing-province">Province:</label>
+              </div>
+              <div class="col-sm-9">
+                <select class="form-control" id="mailing-province" type="text" formControlName="province" placeholder="">
+                  <option value="null">Select</option>
+                  <option *ngFor="let province of provinces" [value]="province.abbr">{{province.name}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-sm-3">
+                <span class="required-indicator"></span>
+                <label for="mailing-postalCode">Postal Code:</label>
+              </div>
+              <div class="col-sm-9">
+                <input class="form-control" id="mailing-postalCode" type="text" formControlName="postalCode" placeholder="K0K 0K0">
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+
+      <div>
+        <hr>
+      </div>
+
+      <div class="communication">
+        <div class="section-title">
+          <h4>Communication</h4>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-sm-3">
+            <span class="required-indicator"></span>
+            <label for="telephone">Telephone:</label>
+          </div>
+
+          <div class="col-sm-9">
+            <input class="form-control" id="telephone" type="text" formControlName="telephone" placeholder="000-000-0000">
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-sm-3">
+            <span class="required-indicator"></span>
+            <label for="mobile-phone">Mobile Phone:</label>
+          </div>
+
+          <div class="col-sm-9">
+            <input class="form-control" id="mobile-phone" type="text" formControlName="mobile" placeholder="000-000-0000">
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-sm-3">
+            <span class="required-indicator"></span>
+            <label for="email-address">Email Address:</label>
+          </div>
+
+          <div class="col-sm-9">
+            <input class="form-control" id="email-address" type="email" formControlName="emailAddress" placeholder="name@email.com">
+          </div>
+        </div>
+
+      </div>
     </form>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-default" (click)="close()">Cancel</button>
+    <button [disabled]="contactInfoForm.pristine || contactInfoForm.invalid" class="btn btn-primary" (click)="saveAndClose()">Save and Close</button>
   </div>
 </div>

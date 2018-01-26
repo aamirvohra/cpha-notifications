@@ -27,7 +27,17 @@ export class AccountComponent {
 
   protected editContactInformation() {
     this.contactModalRef = this.modalService.show(ContactFormComponent,
-      Object.assign({}, this.modalOptions, { class: 'contact-form-modal' }));
+      Object.assign({}, this.modalOptions,
+        { class: 'contact-form-modal' }));
+
+    this.contactModalRef.content.close = () => {
+        this.contactModalRef.hide();
+    };
+
+    this.contactModalRef.content.saveAndClose = () => {
+      console.log(this.contactModalRef.content.contactInfoForm.value);
+      this.contactModalRef.hide();
+    };
   }
 
 }

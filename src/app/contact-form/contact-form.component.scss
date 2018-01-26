@@ -22,16 +22,31 @@
     }
 
     img {
-      top: 26px
+      top: 26px;
+      right: 20px
     }
   }
 
   .modal-body {
     padding: 30px 20px 40px;
 
-    input[type="text"], select {
+    input[type="email"],input[type="text"], select {
       height: 35px;
       width: 275px;
+    }
+
+    .businessAddress {
+      padding-bottom: 5px;
+    }
+
+    .communication {
+      .form-group:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .checkbox {
+      margin-bottom: 20px;
     }
 
     .split {
@@ -42,6 +57,24 @@
         &:last-child {
           width: 46%;
         }
+      }
+    }
+  }
+
+  .modal-footer {
+    padding: 22px;
+
+    button {
+      height: 40px;
+      padding: 10px 25px;
+
+      &:last-child {
+        margin-left: 10px;
+      }
+
+      &.btn-primary {
+        background: black;
+        color: white;
       }
     }
   }
