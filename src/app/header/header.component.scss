@@ -47,6 +47,7 @@
       text-align: center;
       margin-top: 20px;
       margin-bottom: 20px;
+      z-index: 1;
 
       img {
         width: 75%;
@@ -56,17 +57,16 @@
 
   .main-nav {
     padding-top: 15px;
+    display: flex;
+    justify-content: flex-end;
 
 
     @media (max-width: 767px) {
       background-color: $mainNavBGColor;
       padding: 5px 14px;
-      overflow: hidden;
     }
 
     ul.pre-login-menu {
-      float: right;
-
       @media (min-width: 992px) {
         margin-right: 70px;
       }
@@ -113,8 +113,9 @@
       }
 
       @media (max-width: 991px) {
-        float: right;
+
       }
+
       .dropdown {
         a {
           background-color: inherit;
@@ -133,15 +134,21 @@
       }
 
       .dropdown-menu {
-        top: 120%;
         padding: 15px 5px;
         min-width: 225px;
-        right: 20px;
+        right: 0;
         left: auto;
 
+        &:before {
+          right: 8px !important;
+        }
+
         @media (max-width: 767px) {
-          top: 0;
-          padding: 15px 5px;
+          right: -16px;
+
+          &:before {
+            right: 22px !important;
+          }
         }
 
         li {

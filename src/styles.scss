@@ -11,6 +11,7 @@ body {
   font-size: 1em;
   color: #000000;
   line-height: 1.250rem;
+  height: 0;
 
   @media (max-width: 767px) {
     font-size: 12px;
@@ -76,6 +77,10 @@ body {
 
   .modal-dialog {
     margin: 0;
+
+    @media (max-width: 767px) {
+      height: 500px;
+    }
   }
 
   .hide {
@@ -124,6 +129,10 @@ body {
 
     input[type="checkbox"] {
       top: -20px;
+
+      @media (max-width: 991px) {
+        margin-left: -22px;
+      }
     }
 
     input::-moz-placeholder {
