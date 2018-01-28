@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-submit-notification',
@@ -20,6 +20,14 @@ export class SubmitNotificationComponent implements OnInit {
       drugName: [null, Validators.required],
       requestType: [null, Validators.required],
       messageTitle: [null, Validators.required],
+      send: ['now'],
+      repeatMessage: this.fb.group({
+        repeat: [true],
+        repeatTimes: [null, Validators.required],
+        dates: new FormArray([])
+      }),
+      geoTargeting: new FormArray([]),
+
     });
   }
 

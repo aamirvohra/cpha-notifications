@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppURLRepo } from '../../utils/app-url-repo';
+import { Province } from '../../utils/province';
 
 @Component({
   selector: 'app-contact-form',
@@ -35,48 +36,7 @@ export class ContactFormComponent implements OnInit {
       emailAddress: [null, Validators.required],
     });
 
-    this.provinces = [
-      {
-        name: 'Alberta',
-        abbr: 'AB'
-      },
-      {
-        name: 'British Columbia',
-        abbr: 'BC'
-      },
-      {
-        name: 'Manitoba',
-        abbr: 'MB'
-      },
-      {
-        name: 'New Brunswick',
-        abbr: 'NB'
-      },
-      {
-        name: 'Newfoundland and Labrador',
-        abbr: 'NL'
-      },
-      {
-        name: 'Nova Scotia',
-        abbr: 'NS',
-      },
-      {
-        name: 'Ontario',
-        abbr: 'ON'
-      },
-      {
-        name: 'Prince Edward Island',
-        abbr: 'PE'
-      },
-      {
-        name: 'Quebec',
-        abbr: 'QC',
-      },
-      {
-        name: 'Saskatchewan',
-        abbr: 'SK'
-      },
-    ];
+    this.provinces = Province.getProvinceList();
   }
 
   ngOnInit() {
