@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ReportsComponent } from './reports/reports.component';
 import { AccountComponent } from './account/account.component';
+import { SubmitNotificationComponent } from './submit-notification/submit-notification.component';
 
 const ROUTES: Routes = [
   {
@@ -16,6 +17,15 @@ const ROUTES: Routes = [
     path: 'account',
     component: AccountComponent,
   },
+  {
+    path: 'notifications',
+    children: [
+      {
+        path: '',
+        component: SubmitNotificationComponent,
+      }
+    ]
+  }
 
 ];
 

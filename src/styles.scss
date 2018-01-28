@@ -95,6 +95,18 @@ body {
     width: 750px;
   }
 
+  .required-indicator {
+    &:before {
+      content: "*";
+      color: red;
+      padding-right: 2px;
+    }
+  }
+
+  label {
+    color: #666666;
+  }
+
   .modal-header {
     padding: 10px;
     border-color: #CCCCCC;
@@ -138,10 +150,6 @@ body {
     input::-moz-placeholder {
       font-size: 1.286rem;
       color: #999999;
-    }
-
-    label {
-      color: #666666;
     }
 
     .checkbox {

@@ -16,6 +16,7 @@ import { Daterangepicker } from 'ng2-daterangepicker';
 import { AccountComponent } from './account/account.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { NotificationComponent } from './notification/notification.component';
+import { SubmitNotificationComponent } from './submit-notification/submit-notification.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NotificationComponent } from './notification/notification.component';
     AccountComponent,
     ContactFormComponent,
     NotificationComponent,
+    SubmitNotificationComponent,
   ],
   entryComponents: [
     LoginComponent,

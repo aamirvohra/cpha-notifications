@@ -1,0 +1,75 @@
+@import '../../assets/partials/variables.scss';
+
+.submit-notification-wrapper {
+  padding: 50px 150px;
+
+  @media (max-width: 991px) {
+    padding: 30px 20px;
+  }
+
+  .title-description {
+    margin-top: 26px;
+    margin-bottom: 36px;
+  }
+
+  .required-field-note {
+    margin-bottom: 50px;
+
+    > div {
+      &:before {
+        content: "*";
+        color: red;
+      }
+    }
+  }
+
+  .form-wrapper {
+    // padding: 0 15px;
+
+    form {
+      > [class^="col"] {
+        margin-bottom: 20px;
+      }
+    }
+
+    .file-upload {
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      .upload-container {
+        border: 2px dashed $darkGrey;
+        height: 140px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .instruction {
+          text-align: center;
+          top: 50%;
+
+          .fa {
+            color: lightblue;
+          }
+
+          label {
+            color: $hyperLink;
+
+            &:hover {
+              text-decoration: underline;
+              cursor: pointer;
+            }
+          }
+
+          input {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .drag-enter {
+    background-color: $grey;
+  }
+}

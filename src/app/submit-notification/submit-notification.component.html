@@ -1,0 +1,93 @@
+<section class="submit-notification-wrapper">
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+      <h1 class="title">Submit a Notification</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12 title-description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu porttitor dolor. Ut neque odio, lobortis ac metus in, fringilla tempus mi
+    </div>
+  </div>
+
+  <div class="row required-field-note">
+    <div class="col-sm-12 col-md-12">
+      Required Fields
+    </div>
+  </div>
+
+  <div class="row form-wrapper">
+    <form [formGroup]="notificationSubmissionForm">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div class="col-sm-1">
+            <label class="required-indicator" for="drug-name">Drug Name:</label>
+          </div>
+
+          <div class="col-sm-3">
+            <select class="form-control" id="drug-name" formControlName="drugName">
+              <option value="null">Select</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div class="col-sm-1">
+            <label class="required-indicator" for="request-type">Request Type:</label>
+          </div>
+
+          <div class="col-sm-3">
+            <select class="form-control" id="request-type" formControlName="requestType">
+              <option value="null">Select</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div class="col-sm-1">
+            <label class="required-indicator" for="message-title">Message Title:</label>
+          </div>
+
+          <div class="col-sm-3">
+            <input class="form-control" type="text" id="message-title" formControlName="messageTitle" placeholder="Enter Title">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 file-upload">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <label class="required-indicator">Upload File (Max: 5MB):</label>
+          </div>
+
+          <div (drop)="onDrop($event)"
+               (dragover)="onDragOver($event)"
+               (dragleave)="onDragLeave(element)"
+               (dragenter)="onDragEnter(element)" class="col-sm-7">
+            <div class="upload-container" #element>
+              <div class="instruction">
+                <div>
+                  <i class="fa fa-2x fa-cloud-upload" aria-hidden="true"></i>
+                </div>
+                <div>
+                  Drag and drop your files, or 
+                  <label for="file-explorer">
+                    <input id="file-explorer" type="file">browse
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
