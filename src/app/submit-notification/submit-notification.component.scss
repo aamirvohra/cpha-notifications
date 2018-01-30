@@ -92,9 +92,24 @@
     .repeat {
       margin-top: 6px;
 
-      .select-times {
+      .select-times, .date {
         height: 35px;
         width: 120px;
+        display: inline-block;
+      }
+
+      .description {
+        height: 35px;
+        width: 300px;
+        display: inline-block;
+      }
+
+      .repeat-times {
+        margin-top: 20px;
+      }
+
+      .repeat-times, .repeat-dates {
+        margin-bottom: 20px;
       }
     }
   }

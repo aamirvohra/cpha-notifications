@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-submit-notification',
@@ -13,7 +13,11 @@ export class SubmitNotificationComponent implements OnInit {
 
   protected notificationSubmissionForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  protected numTimes: Array<number>;
+
+  constructor(private fb: FormBuilder) {
+    this.numTimes = [];
+  }
 
   ngOnInit() {
     this.notificationSubmissionForm = this.fb.group({
@@ -22,13 +26,71 @@ export class SubmitNotificationComponent implements OnInit {
       messageTitle: [null, Validators.required],
       send: ['now'],
       repeatMessage: this.fb.group({
-        repeat: [true],
-        repeatTimes: [null, Validators.required],
+        repeat: [false],
+        repeatTimes: [null],
         dates: new FormArray([])
       }),
       geoTargeting: new FormArray([]),
-
     });
+
+    this.subscribeOnRepeatMessageChangeEvent();
+  }
+
+  private subscribeOnRepeatMessageChangeEvent() {
+    this.notificationSubmissionForm.controls
+      .repeatMessage['controls'].repeat.valueChanges.subscribe(
+      change => {
+        const repeatTimesControl: FormControl = this.notificationSubmissionForm.controls
+          .repeatMessage['controls'].repeatTimes;
+        if (change) {
+          repeatTimesControl.setValue(0);
+          repeatTimesControl.setValidators(Validators.required);
+
+          this.updateFormOnRepeatTimesEvent();
+        }
+        else {
+          repeatTimesControl.clearValidators();
+        }
+      }
+    );
+  }
+
+  private updateFormOnRepeatTimesEvent() {
+    let dateFormArray = <FormArray> this.notificationSubmissionForm.controls
+      .repeatMessage['controls'].dates;
+
+    this.notificationSubmissionForm.controls
+      .repeatMessage['controls'].repeatTimes.valueChanges.subscribe(
+        times => {
+
+         if (times > 0) {
+
+           this.numTimes = [];
+
+           for (let i = 0; i < times; i++) {
+             this.numTimes.push(i);
+           }
+
+           dateFormArray = this.fb.array([]);
+
+           for (let i = 0; i < times; i++) {
+             const formGroup = this.fb.group({
+               date: [null, Validators.required],
+               description: [null],
+             });
+
+             dateFormArray.push(formGroup);
+           }
+         }
+        }
+    );
+
+    this.notificationSubmissionForm.controls
+      .repeatMessage['controls'].dates.valueChanges.subscribe(
+      change => {
+        console.log(change);
+      }
+    );
   }
 
   protected onDrop(event) {
