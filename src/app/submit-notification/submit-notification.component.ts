@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Province } from '../../utils/province';
 
 @Component({
   selector: 'app-submit-notification',
@@ -33,6 +34,18 @@ export class SubmitNotificationComponent implements OnInit {
       geoTargeting: new FormArray([]),
     });
 
+    Province.getProvinceList().map(
+      val => {
+        this.notificationSubmissionForm.controls['geoTargeting']['controls'].push(
+          this.fb.group({
+            abbr: [val.abbr],
+            name: [val.name],
+            selected: [false],
+          })
+        );
+      }
+    );
+
     this.subscribeOnRepeatMessageChangeEvent();
   }
 
@@ -56,7 +69,7 @@ export class SubmitNotificationComponent implements OnInit {
   }
 
   private updateFormOnRepeatTimesEvent() {
-    let dateFormArray = <FormArray> this.notificationSubmissionForm.controls
+    const dateFormArray = <FormArray> this.notificationSubmissionForm.controls
       .repeatMessage['controls'].dates;
 
     this.notificationSubmissionForm.controls
@@ -71,7 +84,10 @@ export class SubmitNotificationComponent implements OnInit {
              this.numTimes.push(i);
            }
 
-           dateFormArray = this.fb.array([]);
+           if (dateFormArray) {
+             this.notificationSubmissionForm.controls
+               .repeatMessage['controls'].dates = this.fb.array([]);
+           }
 
            for (let i = 0; i < times; i++) {
              const formGroup = this.fb.group({
@@ -79,17 +95,15 @@ export class SubmitNotificationComponent implements OnInit {
                description: [null],
              });
 
-             dateFormArray.push(formGroup);
+             this.notificationSubmissionForm.controls
+               .repeatMessage['controls'].dates.push(formGroup);
            }
          }
+         else {
+           this.notificationSubmissionForm.controls
+             .repeatMessage['controls'].dates = this.fb.array([]);
+         }
         }
-    );
-
-    this.notificationSubmissionForm.controls
-      .repeatMessage['controls'].dates.valueChanges.subscribe(
-      change => {
-        console.log(change);
-      }
     );
   }
 
@@ -133,5 +147,13 @@ export class SubmitNotificationComponent implements OnInit {
 
   protected getFileType(item) {
     return item.type;
+  }
+
+  protected cancel() {
+
+  }
+
+  protected preview() {
+
   }
 }

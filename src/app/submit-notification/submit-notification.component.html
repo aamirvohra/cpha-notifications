@@ -21,7 +21,7 @@
     <form [formGroup]="notificationSubmissionForm">
       <div class="col-sm-12">
         <div class="form-group">
-          <div class="col-sm-1">
+          <div class="col-sm-2">
             <label class="required-indicator" for="drug-name">Drug Name:</label>
           </div>
 
@@ -35,7 +35,7 @@
 
       <div class="col-sm-12">
         <div class="form-group">
-          <div class="col-sm-1">
+          <div class="col-sm-2">
             <label class="required-indicator" for="request-type">Request Type:</label>
           </div>
 
@@ -49,7 +49,7 @@
 
       <div class="col-sm-12">
         <div class="form-group">
-          <div class="col-sm-1">
+          <div class="col-sm-2">
             <label class="required-indicator" for="message-title">Message Title:</label>
           </div>
 
@@ -137,7 +137,8 @@
         </div>
 
         <ng-container formArrayName="dates"
-                      *ngIf="notificationSubmissionForm.controls.repeatMessage.controls.repeatTimes.value">
+                      *ngIf="notificationSubmissionForm.controls.repeatMessage.controls.repeatTimes.value
+                      && notificationSubmissionForm.controls.repeatMessage.controls.dates.controls.length">
           <div class="col-sm-12 repeat-dates" *ngFor="let i of numTimes"
                [formGroup]="notificationSubmissionForm.controls.repeatMessage.controls.dates.controls[i]">
             <div class="col-sm-2">
@@ -151,6 +152,28 @@
           </div>
         </ng-container>
 
+      </div>
+
+      <div class="col-sm-12 geo-targets">
+        <div class="form-group">
+
+          <div class="col-sm-12 geo-target-section">
+            <label class="required-indicator">Geo-targeting</label>
+          </div>
+
+          <div class="col-sm-8" formArrayName="geoTargeting">
+            <div class="col-sm-4" *ngFor="let province of notificationSubmissionForm.controls.geoTargeting.controls">
+              <label [formGroup]="province">
+                <input type="checkbox" formControlName="selected"> {{province.controls.name.value}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="button-row col-sm-7">
+        <button class="btn btn-default" (click)="cancel()">Cancel</button>
+        <button [disabled]="" class="btn btn-primary" (click)="preview()">Preview</button>
       </div>
 
     </form>

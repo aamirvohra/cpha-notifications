@@ -112,6 +112,35 @@
         margin-bottom: 20px;
       }
     }
+
+    .geo-targets {
+      margin-bottom: 50px;
+
+      .geo-target-section {
+        margin-bottom: 20px;
+      }
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: flex-end;
+      border-top: 1px solid #d1d1d1;
+      padding: 20px;
+
+      button {
+        height: 40px;
+        padding: 10px 25px;
+
+        &:last-child {
+          margin-left: 10px;
+        }
+
+        &.btn-primary {
+          background: black;
+          color: white;
+        }
+      }
+    }
   }
 
   .drag-enter {
