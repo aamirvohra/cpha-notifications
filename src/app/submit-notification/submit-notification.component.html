@@ -138,10 +138,10 @@
           </div>
         </div>
 
-        <ng-container formArrayName="dates"
-                      *ngIf="notificationSubmissionForm.controls['repeatMessage'].controls.repeatTimes.value
-                      && notificationSubmissionForm.controls['repeatMessage'].controls.dates.controls.length">
-          <div class="col-sm-12 repeat-dates" *ngFor="let date of notificationSubmissionForm.controls['repeatMessage'].controls.dates.controls; let i = index;"
+
+        <ng-container *ngIf="notificationSubmissionForm.controls['repeatMessage'].controls.repeatTimes.value"
+                      formArrayName="dates">
+          <div class="col-sm-12 repeat-dates" *ngFor="let date of dates.controls; let i = index;"
                [formGroup]="date">
             <div class="col-sm-2">
               <label class="required-indicator" for="num-times">Dates {{ i + 1 }}:</label>
