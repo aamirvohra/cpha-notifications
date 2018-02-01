@@ -28,6 +28,7 @@
           <div class="col-sm-3">
             <select class="form-control" id="drug-name" formControlName="drugName">
               <option value="null">Select</option>
+              <option value="test">Test</option>
             </select>
           </div>
         </div>
@@ -42,6 +43,7 @@
           <div class="col-sm-3">
             <select class="form-control" id="request-type" formControlName="requestType">
               <option value="null">Select</option>
+              <option value="test">Test</option>
             </select>
           </div>
         </div>
@@ -137,10 +139,10 @@
         </div>
 
         <ng-container formArrayName="dates"
-                      *ngIf="notificationSubmissionForm.controls.repeatMessage.controls.repeatTimes.value
-                      && notificationSubmissionForm.controls.repeatMessage.controls.dates.controls.length">
-          <div class="col-sm-12 repeat-dates" *ngFor="let i of numTimes"
-               [formGroup]="notificationSubmissionForm.controls.repeatMessage.controls.dates.controls[i]">
+                      *ngIf="notificationSubmissionForm.controls['repeatMessage'].controls.repeatTimes.value
+                      && notificationSubmissionForm.controls['repeatMessage'].controls.dates.controls.length">
+          <div class="col-sm-12 repeat-dates" *ngFor="let date of notificationSubmissionForm.controls['repeatMessage'].controls.dates.controls; let i = index;"
+               [formGroup]="date">
             <div class="col-sm-2">
               <label class="required-indicator" for="num-times">Dates {{ i + 1 }}:</label>
             </div>
@@ -172,8 +174,8 @@
       </div>
 
       <div class="button-row col-sm-7">
-        <button class="btn btn-default" (click)="cancel()">Cancel</button>
-        <button [disabled]="" class="btn btn-primary" (click)="preview()">Preview</button>
+        <button [disabled]="notificationSubmissionForm.pristine" class="btn btn-default" (click)="cancel()">Cancel</button>
+        <button [disabled]="notificationSubmissionForm.pristine || notificationSubmissionForm.invalid" [disabled]="" class="btn btn-primary" (click)="preview()">Preview</button>
       </div>
 
     </form>

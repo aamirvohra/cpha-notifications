@@ -14,11 +14,7 @@ export class SubmitNotificationComponent implements OnInit {
 
   protected notificationSubmissionForm: FormGroup;
 
-  protected numTimes: Array<number>;
-
-  constructor(private fb: FormBuilder) {
-    this.numTimes = [];
-  }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.notificationSubmissionForm = this.fb.group({
@@ -29,11 +25,17 @@ export class SubmitNotificationComponent implements OnInit {
       repeatMessage: this.fb.group({
         repeat: [false],
         repeatTimes: [null],
-        dates: new FormArray([])
+        dates: new FormArray([]),
       }),
       geoTargeting: new FormArray([]),
     });
 
+    this.populateProvinces();
+
+    this.subscribeOnRepeatMessageChangeEvent();
+  }
+
+  private populateProvinces() {
     Province.getProvinceList().map(
       val => {
         this.notificationSubmissionForm.controls['geoTargeting']['controls'].push(
@@ -45,8 +47,6 @@ export class SubmitNotificationComponent implements OnInit {
         );
       }
     );
-
-    this.subscribeOnRepeatMessageChangeEvent();
   }
 
   private subscribeOnRepeatMessageChangeEvent() {
@@ -75,33 +75,25 @@ export class SubmitNotificationComponent implements OnInit {
     this.notificationSubmissionForm.controls
       .repeatMessage['controls'].repeatTimes.valueChanges.subscribe(
         times => {
+          times = parseInt(times, 10);
 
          if (times > 0) {
-
-           this.numTimes = [];
-
-           for (let i = 0; i < times; i++) {
-             this.numTimes.push(i);
-           }
-
            if (dateFormArray) {
              this.notificationSubmissionForm.controls
-               .repeatMessage['controls'].dates = this.fb.array([]);
+               .repeatMessage['controls'].dates = new FormArray([]);
            }
 
            for (let i = 0; i < times; i++) {
-             const formGroup = this.fb.group({
-               date: [null, Validators.required],
-               description: [null],
-             });
-
              this.notificationSubmissionForm.controls
-               .repeatMessage['controls'].dates.push(formGroup);
+               .repeatMessage['controls'].dates.push(this.fb.group({
+               date: ['', Validators.required],
+               description: [null],
+             }));
            }
          }
          else {
            this.notificationSubmissionForm.controls
-             .repeatMessage['controls'].dates = this.fb.array([]);
+             .repeatMessage['controls'].dates = new FormArray([]);
          }
         }
     );
@@ -150,10 +142,11 @@ export class SubmitNotificationComponent implements OnInit {
   }
 
   protected cancel() {
-
+    console.log(this.notificationSubmissionForm);
+    // this.populateProvinces();
   }
 
   protected preview() {
-
+    console.log(this.notificationSubmissionForm.errors);
   }
 }
