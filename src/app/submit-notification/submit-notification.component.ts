@@ -48,6 +48,21 @@ export class SubmitNotificationComponent implements OnInit {
 
     const provinceFormArray = this.fb.array(formGroup);
     this.notificationSubmissionForm.setControl('geoTargeting', provinceFormArray);
+    this.notificationSubmissionForm.get('geoTargeting').setValidators(
+      (provinceArray: FormArray) => {
+        let atleastOneSelected = false;
+
+        provinceArray.controls.map(
+          (province: FormGroup) => {
+            if (province.controls.selected.value) {
+              atleastOneSelected = true;
+            }
+          }
+        );
+
+        return atleastOneSelected ? null : { msg: 'GeoTarget is required field. Please select one province'};
+      }
+    );
   }
 
   private subscribeOnRepeatMessageChangeEvent() {
@@ -72,8 +87,9 @@ export class SubmitNotificationComponent implements OnInit {
       change => {
         const times = this.notificationSubmissionForm.get('repeatMessage.repeatTimes');
 
+        times.setValue(0);
+
         if (change) {
-          times.setValue(0);
           times.setValidators(Validators.required);
 
           this.updateFormOnRepeatTimesEvent();
@@ -86,48 +102,43 @@ export class SubmitNotificationComponent implements OnInit {
   }
 
   private updateFormOnRepeatTimesEvent() {
-    // const dateFormArray = <FormArray> this.notificationSubmissionForm.controls
-    //   .repeatMessage['controls'].dates;
-
     let dates = this.notificationSubmissionForm.get('repeatMessage.dates') as FormArray;
     const times = this.notificationSubmissionForm.get('repeatMessage.repeatTimes');
 
     times.valueChanges.subscribe(
-      times => {
-        const intTimes = parseInt(times, 10);
+      value => {
+        const intTimes = parseInt(value, 10);
 
         if (intTimes > 0) {
-          dates = this.fb.array([]);
 
-          const dateGroupArray = this.fb.array([]);
-          for (let i = 0; i < times; i++) {
-            dateGroupArray.push(this.fb.group({
-              date: [null, Validators.required],
+          this.resetDatesFormArray();
+
+          for (let i = 0; i < value; i++) {
+            dates.push(this.fb.group({
+              date: [null, [Validators.required]],
               description: [null],
             }));
           }
-
-          // dates = this.fb.array(dateGroupArray);
-
-          // console.log(dates);
-
-          // this.notificationSubmissionForm.setControl('repeatMessage.dates', dateGroupArray);
-
-          this.notificationSubmissionForm.controls
-            .repeatMessage['controls'].dates = dateGroupArray;
         }
         else {
-          dates = this.fb.array([]);
+          this.resetDatesFormArray();
         }
       }
     );
+  }
+
+  private resetDatesFormArray() {
+    const dates = this.notificationSubmissionForm.get('repeatMessage.dates') as FormArray;
+    while (dates.length) {
+      dates.removeAt(0);
+    }
   }
 
   protected onDrop(event) {
     event.preventDefault();
     event.stopPropagation();
 
-    console.log(event.dataTransfer);
+    console.log(event.dataTransfer, event.dataTransfer.files);
 
     console.log(event.dataTransfer.items[0]);
 
