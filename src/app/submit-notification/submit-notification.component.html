@@ -79,12 +79,20 @@
                 <div>
                   Drag and drop your files, or 
                   <label for="file-explorer">
-                    <input id="file-explorer" type="file">browse
+                    <input id="file-explorer" type="file" (change)="handleFileUploads($event)">browse
                   </label>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="col-sm-12 file-list">
+          <a *ngFor="let file of notificationSubmissionForm.controls.uploadedFiles.value; let i = index">
+            <span>{{file.name}}</span>
+            <span class="size">({{file.size}} K)</span>
+            <img (click)="notificationSubmissionForm.controls.uploadedFiles.removeAt(i)" [src]="closeIcon">
+          </a>
         </div>
       </div>
 

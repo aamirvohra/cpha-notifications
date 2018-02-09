@@ -66,6 +66,30 @@
           }
         }
       }
+
+      .file-list {
+        margin-top: 10px;
+
+        a  {
+          padding: 7px 10px;
+          background-color: #98F5FF;
+          margin-right: 10px;
+          font-weight: bold;
+
+          .size {
+            color: #666666;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          img {
+            padding-left: 10px;
+            width: 20px;
+          }
+        }
+      }
     }
 
     .comments {

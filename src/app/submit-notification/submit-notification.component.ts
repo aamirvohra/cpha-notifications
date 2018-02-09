@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Province } from '../../utils/province';
+import { AppURLRepo } from '../../utils/app-url-repo';
 
 @Component({
   selector: 'app-submit-notification',
@@ -14,6 +15,14 @@ export class SubmitNotificationComponent implements OnInit {
 
   protected notificationSubmissionForm: FormGroup;
 
+  public closeIcon: string = AppURLRepo.CLOSE_ICON;
+
+  private readonly allowedFileExtension: Array<string> = [
+    'application/pdf',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  ];
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
@@ -22,6 +31,7 @@ export class SubmitNotificationComponent implements OnInit {
       requestType: [null, Validators.required],
       messageTitle: [null, Validators.required],
       send: ['now'],
+      uploadedFiles: this.fb.array([], Validators.required),
       repeatMessage: this.fb.group({
         repeat: [false],
         repeatTimes: [null],
@@ -102,7 +112,7 @@ export class SubmitNotificationComponent implements OnInit {
   }
 
   private updateFormOnRepeatTimesEvent() {
-    let dates = this.notificationSubmissionForm.get('repeatMessage.dates') as FormArray;
+    const dates = this.notificationSubmissionForm.get('repeatMessage.dates') as FormArray;
     const times = this.notificationSubmissionForm.get('repeatMessage.repeatTimes');
 
     times.valueChanges.subscribe(
@@ -138,38 +148,51 @@ export class SubmitNotificationComponent implements OnInit {
     event.preventDefault();
     event.stopPropagation();
 
-    console.log(event.dataTransfer, event.dataTransfer.files);
+    // console.log(event.dataTransfer, event.dataTransfer.files);
+    //
+    // console.log(event.dataTransfer.items[0]);
 
-    console.log(event.dataTransfer.items[0]);
+    this.handleFileUploads(event);
 
-    const firstItem = event.dataTransfer.items[0];
+    // const firstItem = event.dataTransfer.items[0];
+    //
+    // if (!this.isFileKind(firstItem)) {
+    //   return;
+    // }
 
-    if (!this.isFileKind(firstItem)) {
-      return;
+    // console.log(this.getFileType(firstItem));
+  }
+
+  protected handleFileUploads (event) {
+    const files = event.target.files || event.dataTransfer.files;
+    const fileUploadFormArray = this.notificationSubmissionForm.get('uploadedFiles') as FormArray;
+
+    for (const file of files) {
+      if (this.isFileTypeSupported(file)) {
+       const fileSize = Math.ceil(file.size / 1000);
+        fileUploadFormArray.push(this.fb.group({
+          name: file.name,
+          size: fileSize,
+        }));
+      }
     }
-
-    console.log(this.getFileType(firstItem));
-
   }
 
   protected onDragOver(event) {
     event.preventDefault();
-    // event.stopPropagation();
   }
 
   protected onDragEnter(element) {
     element.classList.add(this.DRAG_ENTER_CLASS);
-    // element.classList.remove(this.DRAG_EXIT_CLASS);
 
   }
 
   protected onDragLeave(element) {
-    // element.classList.add(this.DRAG_EXIT_CLASS);
     element.classList.remove(this.DRAG_ENTER_CLASS);
   }
 
-  protected isFileKind(item) {
-    return item.kind === 'file';
+  protected isFileTypeSupported(file) {
+    return this.allowedFileExtension.indexOf(file.type) !== -1 ? true : false;
   }
 
   protected getFileType(item) {
@@ -177,8 +200,8 @@ export class SubmitNotificationComponent implements OnInit {
   }
 
   protected cancel() {
-    console.log(this.notificationSubmissionForm);
-    // this.populateProvinces();
+    //TODO reset form
+   // this.notificationSubmissionForm.reset();
   }
 
   protected preview() {
