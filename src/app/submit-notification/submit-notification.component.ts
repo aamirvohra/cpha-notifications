@@ -179,6 +179,8 @@ export class SubmitNotificationComponent implements OnInit {
     const files = event.target.files || event.dataTransfer.files;
     const fileUploadFormArray = this.notificationSubmissionForm.get('uploadedFiles') as FormArray;
 
+    // @TODO check for file upload size for 5MB restriction
+
     for (const file of files) {
       if (this.isFileTypeSupported(file)) {
        const fileSize = Math.ceil(file.size / 1000);

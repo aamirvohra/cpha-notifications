@@ -21,11 +21,11 @@
     <form [formGroup]="notificationSubmissionForm">
       <div class="col-sm-12">
         <div class="form-group">
-          <div class="col-sm-2">
+          <div class="col-md-2 col-sm-3">
             <label class="required-indicator" for="drug-name">Drug Name:</label>
           </div>
 
-          <div class="col-sm-3">
+          <div class="col-md-2 col-sm-6">
             <select class="form-control" id="drug-name" formControlName="drugName">
               <option value="null">Select</option>
               <option value="test">Test</option>
@@ -36,11 +36,11 @@
 
       <div class="col-sm-12">
         <div class="form-group">
-          <div class="col-sm-2">
+          <div class="col-md-2 col-sm-3">
             <label class="required-indicator" for="request-type">Request Type:</label>
           </div>
 
-          <div class="col-sm-3">
+          <div class="col-md-3 col-sm-6">
             <select class="form-control" id="request-type" formControlName="requestType">
               <option value="null">Select</option>
               <option value="test">Test</option>
@@ -49,28 +49,28 @@
         </div>
       </div>
 
-      <div class="col-sm-12">
+      <div class="col-sm-12 message-title">
         <div class="form-group">
-          <div class="col-sm-2">
+          <div class="col-md-2 col-sm-3">
             <label class="required-indicator" for="message-title">Message Title:</label>
           </div>
 
-          <div class="col-sm-3">
+          <div class="col-md-3 col-sm-6">
             <input class="form-control" type="text" id="message-title" formControlName="messageTitle" placeholder="Enter Title">
           </div>
         </div>
       </div>
 
-      <div class="col-sm-12 file-upload">
+      <div class="col-md-12 file-upload">
         <div class="form-group">
           <div class="col-sm-12">
-            <label class="required-indicator">Upload File (Max: 5MB):</label>
+            <label class="required-indicator">Upload File (Max: 5 MB):</label>
           </div>
 
           <div (drop)="onDrop($event)"
                (dragover)="onDragOver($event)"
                (dragleave)="onDragLeave(element)"
-               (dragenter)="onDragEnter(element)" class="col-sm-7">
+               (dragenter)="onDragEnter(element)" class="col-sm-7 visible-md-block">
             <div class="upload-container" #element>
               <div class="instruction">
                 <div>
@@ -83,6 +83,12 @@
                   </label>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4 visible-sm-block">
+            <div class="input-file-container">
+              <input type="file" (change)="handleFileUploads($event)">Select Files
             </div>
           </div>
         </div>
@@ -104,7 +110,7 @@
             </label>
           </div>
 
-          <div class="col-sm-7">
+          <div class="col-md-7">
             <textarea  id="comments" rows="4" formControlName="comments"></textarea>
           </div>
         </div>
@@ -135,11 +141,11 @@
         </div>
 
         <div *ngIf="notificationSubmissionForm.controls.repeatMessage.controls.repeat.value" class="col-sm-12 repeat-times">
-          <div class="col-sm-2">
+          <div class="col-md-2 col-sm-3">
             <label class="required-indicator" for="num-times"> Number of Times:</label>
           </div>
 
-          <div class="col-sm-3">
+          <div class="col-md-3 col-sm-3">
             <select class="form-control select-times" id="num-times" formControlName="repeatTimes">
               <option *ngFor="let num of [0,1,2,3,4,5]" [value]="num">{{num}}</option>
             </select>
@@ -151,11 +157,11 @@
                       formArrayName="dates">
           <div class="col-sm-12 repeat-dates" *ngFor="let date of dates.controls; let i = index;"
                [formGroup]="date">
-            <div class="col-sm-2">
+            <div class="col-md-2 col-sm-3">
               <label class="required-indicator" for="num-times">Dates {{ i + 1 }}:</label>
             </div>
 
-            <div class="col-sm-10">
+            <div class="col-md-10 col-sm-9">
               <input class="form-control date" type="text" placeholder="DD/MM/YYYY" formControlName="date">
               <input class="form-control description" type="text" placeholder="Description" formControlName="description">
             </div>
@@ -171,7 +177,7 @@
             <label class="required-indicator">Geo-targeting</label>
           </div>
 
-          <div class="col-sm-8" formArrayName="geoTargeting">
+          <div class="col-md-8" formArrayName="geoTargeting">
             <div class="col-sm-4" *ngFor="let province of notificationSubmissionForm.controls.geoTargeting.controls">
               <label [formGroup]="province">
                 <input type="checkbox" formControlName="selected"> {{province.controls.name.value}}
@@ -181,7 +187,7 @@
         </div>
       </div>
 
-      <div class="button-row col-sm-7">
+      <div class="button-row">
         <button [disabled]="notificationSubmissionForm.pristine" class="btn btn-default" (click)="cancel()">Cancel</button>
         <button [disabled]="notificationSubmissionForm.pristine || notificationSubmissionForm.invalid" [disabled]="" class="btn btn-primary" (click)="preview()">Preview</button>
       </div>
