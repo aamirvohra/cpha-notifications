@@ -30,7 +30,8 @@ export class SubmitNotificationComponent implements OnInit {
       drugName: [null, Validators.required],
       requestType: [null, Validators.required],
       messageTitle: [null, Validators.required],
-      send: ['now'],
+      send: [null],
+      comments: [null],
       uploadedFiles: this.fb.array([], Validators.required),
       repeatMessage: this.fb.group({
         repeat: [false],
@@ -40,9 +41,14 @@ export class SubmitNotificationComponent implements OnInit {
       geoTargeting: this.fb.array([]),
     });
 
-    this.populateProvinces();
+    this.initForm();
 
     this.subscribeOnRepeatMessageChangeEvent();
+  }
+
+  private initForm() {
+    this.notificationSubmissionForm.get('send').setValue('now');
+    this.populateProvinces();
   }
 
   private populateProvinces() {
@@ -143,6 +149,12 @@ export class SubmitNotificationComponent implements OnInit {
       dates.removeAt(0);
     }
   }
+  private resetFileUploadArray() {
+    const files = this.notificationSubmissionForm.get('uploadedFiles') as FormArray;
+    while (files.length) {
+      files.removeAt(0);
+    }
+  }
 
   protected onDrop(event) {
     event.preventDefault();
@@ -200,12 +212,13 @@ export class SubmitNotificationComponent implements OnInit {
   }
 
   protected cancel() {
-    //TODO reset form
-   // this.notificationSubmissionForm.reset();
+   this.notificationSubmissionForm.reset();
+   this.resetFileUploadArray();
+   this.initForm();
   }
 
   protected preview() {
-    console.log(this.notificationSubmissionForm.errors);
+    console.log(this.notificationSubmissionForm);
   }
 
   get dates() {
