@@ -44,6 +44,8 @@ export class SubmitNotificationComponent implements OnInit {
     this.initForm();
 
     this.subscribeOnRepeatMessageChangeEvent();
+
+    // this.subscribeOnProvinceAllSelection();
   }
 
   private initForm() {
@@ -52,7 +54,7 @@ export class SubmitNotificationComponent implements OnInit {
   }
 
   private populateProvinces() {
-    const formGroup = Province.getProvinceList().map(
+    const provincesFormGroup = Province.getProvinceList().map(
       val => {
         return this.fb.group({
               abbr: [val.abbr],
@@ -62,7 +64,13 @@ export class SubmitNotificationComponent implements OnInit {
       }
     );
 
-    const provinceFormArray = this.fb.array(formGroup);
+    const allFormGroup = this.fb.group({
+      abbr: ['all'],
+      name: ['All Provinces'],
+      selected: [false],
+    });
+
+    const provinceFormArray = this.fb.array([allFormGroup, ...provincesFormGroup]);
     this.notificationSubmissionForm.setControl('geoTargeting', provinceFormArray);
     this.notificationSubmissionForm.get('geoTargeting').setValidators(
       (provinceArray: FormArray) => {
@@ -113,6 +121,15 @@ export class SubmitNotificationComponent implements OnInit {
         else {
           times.clearValidators();
         }
+      }
+    );
+  }
+
+  private subscribeOnProvinceAllSelection() {
+    console.log(this.notificationSubmissionForm.get('geoTargeting'));
+    this.notificationSubmissionForm.get('geoTargeting').valueChanges.subscribe(
+      change => {
+        console.log(change);
       }
     );
   }
@@ -225,5 +242,17 @@ export class SubmitNotificationComponent implements OnInit {
 
   get dates() {
     return this.notificationSubmissionForm.get('repeatMessage.dates') as FormArray;
+  }
+
+  onProvinceSelection(selectedProvince: string, selected: boolean) {
+    if (selectedProvince === 'all') {
+      const provinceFormArray: any = this.notificationSubmissionForm.get('geoTargeting') as FormArray;
+
+      for (let i = 0; i < provinceFormArray.length; i++) {
+        if (provinceFormArray.controls[i].controls.abbr !== 'all') {
+          provinceFormArray.controls[i].controls.selected.setValue(selected);
+        }
+      }
+    }
   }
 }

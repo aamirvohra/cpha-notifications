@@ -63,14 +63,15 @@
 
       <div class="col-md-12 file-upload">
         <div class="form-group">
-          <div class="col-sm-12">
+          <div class="col-md-12">
             <label class="required-indicator">Upload File (Max: 5 MB):</label>
           </div>
 
-          <div (drop)="onDrop($event)"
+          <div class="col-md-7 hidden-xs hidden-sm"
+               (drop)="onDrop($event)"
                (dragover)="onDragOver($event)"
                (dragleave)="onDragLeave(element)"
-               (dragenter)="onDragEnter(element)" class="col-sm-7 visible-md-block">
+               (dragenter)="onDragEnter(element)">
             <div class="upload-container" #element>
               <div class="instruction">
                 <div>
@@ -86,7 +87,7 @@
             </div>
           </div>
 
-          <div class="col-sm-4 visible-sm-block">
+          <div class="col-sm-4 col-xs-6 visible-sm-block visible-xs-block">
             <div class="input-file-container">
               <input type="file" (change)="handleFileUploads($event)">Select Files
             </div>
@@ -179,7 +180,7 @@
 
           <div class="col-md-8" formArrayName="geoTargeting">
             <div class="col-sm-4" *ngFor="let province of notificationSubmissionForm.controls.geoTargeting.controls">
-              <label [formGroup]="province">
+              <label (click)="onProvinceSelection(province.controls.abbr.value, !province.controls.selected.value)" [formGroup]="province">
                 <input type="checkbox" formControlName="selected"> {{province.controls.name.value}}
               </label>
             </div>
