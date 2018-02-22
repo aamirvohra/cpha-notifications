@@ -7,6 +7,10 @@
     padding: 30px 20px;
   }
 
+  @media (max-width: 767px) {
+    padding: 4px 20px 30px 20px;
+  }
+
   .title-description {
     margin-top: 26px;
     margin-bottom: 36px;
@@ -46,6 +50,12 @@
         @media (max-width: 991px) {
           margin-bottom: 10px;
         }
+
+        @media (max-width: 767px) {
+          padding-left: 0;
+          padding-right: 0;
+          margin-bottom: 20px;
+        }
       }
     }
 
@@ -58,6 +68,10 @@
     .file-upload {
       margin-top: 20px;
       margin-bottom: 20px;
+
+      @media (max-width: 767px) {
+        // margin-bottom: 30px !important;
+      }
 
       .upload-container {
         border: 2px dashed $darkGrey;
@@ -147,12 +161,20 @@
         height: 35px;
         width: 120px;
         display: inline-block;
+
+        @media(max-width: 767px) {
+          width: 90px;
+        }
       }
 
       .description {
         height: 35px;
         width: 300px;
         display: inline-block;
+
+        @media(max-width: 767px) {
+          width: 170px;
+        }
       }
 
       .repeat-times {
@@ -182,12 +204,26 @@
       border-top: 1px solid #d1d1d1;
       padding: 20px;
 
+      @media (max-width: 767px) {
+        justify-content: space-between;
+        padding: 20px 10px;
+      }
+
       button {
         height: 40px;
         padding: 10px 25px;
 
+        @media (max-width: 767px) {
+          padding: 10px 60px;
+        }
+
         &:last-child {
           margin-left: 10px;
+
+
+          @media (max-width: 767px) {
+            margin-left: 0;
+          }
         }
 
         &.btn-primary {
@@ -203,7 +239,10 @@
       color: #000;
       text-align: center;
       background: white;
-      height: 40px;
+
+      input {
+        height: 40px;
+      }
     }
   }
 
