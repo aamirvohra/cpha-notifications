@@ -17,6 +17,9 @@ import { AccountComponent } from './account/account.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SubmitNotificationComponent } from './submit-notification/submit-notification.component';
+import {
+  PreviewNotificationSubmissionComponent
+} from './preview/preview-notification-submission.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { SubmitNotificationComponent } from './submit-notification/submit-notifi
     ContactFormComponent,
     NotificationComponent,
     SubmitNotificationComponent,
+    PreviewNotificationSubmissionComponent,
   ],
   entryComponents: [
     LoginComponent,

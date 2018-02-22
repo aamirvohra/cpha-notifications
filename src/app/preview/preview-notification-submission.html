@@ -1,0 +1,92 @@
+<section class="preview-notification-wrapper">
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+      <h1 class="title">Preview Notification</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12 title-description">
+      Review details below. Once Submitted, notification cannot be edited or removed.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-sm-3">
+        Drug Name:
+      </div>
+
+      <div class="col-sm-9">
+        {{submission.drugName}}
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="col-sm-3">
+        Request Type:
+      </div>
+
+      <div class="col-sm-9">
+        {{submission.requestType}}
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="col-sm-3">
+        Message Type:
+      </div>
+
+      <div class="col-sm-9">
+        {{submission.messageTitle}}
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <h4>Files</h4>
+    </div>
+
+    <div class="col-sm-12">
+      <h4>Comment</h4>
+
+      <div class="col-sm-8">
+        {{submission.comments}}
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <h4>Send</h4>
+
+      <div class="col-sm-12">
+        <div class="col-sm-3">
+          Number of Times:
+        </div>
+
+        <div class="col-sm-9">
+          {{submission.repeatMessage.repeatTimes}}
+        </div>
+      </div>
+
+      <div class="col-sm-12" *ngFor="let date of submission.dates; let i = index;">
+        <div class="col-sm-3">
+          Date {{ i }} :
+        </div>
+
+        <div class="col-sm-3">
+          {{date.date}}
+        </div>
+
+        <div class="col-sm-3">
+          {{date.description}}
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm-12">
+      <h4>Geo-targeting</h4>
+    </div>
+
+
+  </div>
+</section>
