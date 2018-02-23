@@ -1,4 +1,4 @@
-<section class="submit-notification-wrapper">
+<section *ngIf="!previewMode" class="submit-notification-wrapper">
   <div class="row">
     <div class="col-md-12 col-sm-12">
       <h1 class="title">Submit a Notification</h1>
@@ -191,8 +191,8 @@
       </div>
 
       <div class="button-row">
-        <button [disabled]="notificationSubmissionForm.pristine" class="btn btn-default" (click)="cancel()">Cancel</button>
-        <button [disabled]="notificationSubmissionForm.pristine || notificationSubmissionForm.invalid" [disabled]="" class="btn btn-primary" (click)="preview()">Preview</button>
+        <button type="button" [disabled]="notificationSubmissionForm.pristine" class="btn btn-default" (click)="cancel()">Cancel</button>
+        <button type="button" [disabled]="notificationSubmissionForm.pristine || notificationSubmissionForm.invalid" [disabled]="" class="btn btn-primary" (click)="preview()">Preview</button>
       </div>
 
     </form>
@@ -200,3 +200,5 @@
   </div>
 
 </section>
+
+<app-preview *ngIf="previewMode" [currentSubmission]="notificationSubmissionForm.value"></app-preview>

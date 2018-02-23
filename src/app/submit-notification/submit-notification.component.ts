@@ -17,6 +17,8 @@ export class SubmitNotificationComponent implements OnInit {
 
   public closeIcon: string = AppURLRepo.CLOSE_ICON;
 
+  public previewMode: boolean;
+
   private readonly allowedFileExtension: Array<string> = [
     'application/pdf',
     'application/msword',
@@ -237,7 +239,7 @@ export class SubmitNotificationComponent implements OnInit {
   }
 
   protected preview() {
-    console.log(this.notificationSubmissionForm);
+    this.previewMode = true;
   }
 
   get dates() {

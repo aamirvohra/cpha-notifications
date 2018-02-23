@@ -13,6 +13,11 @@ export class PreviewNotificationSubmissionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.submission.geoTargeting = this.submission.geoTargeting.filter(
+      province => {
+        return province.selected && province.name !== 'all';
+      }
+    );
   }
 
 }

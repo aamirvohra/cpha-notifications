@@ -11,82 +11,106 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="col-sm-3">
-        Drug Name:
-      </div>
-
-      <div class="col-sm-9">
-        {{submission.drugName}}
-      </div>
-    </div>
-
-    <div class="col-sm-12">
-      <div class="col-sm-3">
-        Request Type:
-      </div>
-
-      <div class="col-sm-9">
-        {{submission.requestType}}
-      </div>
-    </div>
-
-    <div class="col-sm-12">
-      <div class="col-sm-3">
-        Message Type:
-      </div>
-
-      <div class="col-sm-9">
-        {{submission.messageTitle}}
-      </div>
-    </div>
-
-    <div class="col-sm-12">
-      <h4>Files</h4>
-    </div>
-
-    <div class="col-sm-12">
-      <h4>Comment</h4>
-
-      <div class="col-sm-8">
-        {{submission.comments}}
-      </div>
-    </div>
-
-    <div class="col-sm-12">
-      <h4>Send</h4>
-
+  <div class="form-preview">
+    <div class="row">
       <div class="col-sm-12">
-        <div class="col-sm-3">
-          Number of Times:
+        <div class="col-sm-3 col-md-2">
+          <label>Drug Name:</label>
         </div>
 
         <div class="col-sm-9">
-          {{submission.repeatMessage.repeatTimes}}
+          {{submission.drugName}}
         </div>
       </div>
 
-      <div class="col-sm-12" *ngFor="let date of submission.dates; let i = index;">
-        <div class="col-sm-3">
-          Date {{ i }} :
+      <div class="col-sm-12">
+        <div class="col-sm-3 col-md-2">
+          <label>Request Type:</label>
         </div>
 
-        <div class="col-sm-3">
-          {{date.date}}
-        </div>
-
-        <div class="col-sm-3">
-          {{date.description}}
+        <div class="col-sm-9">
+          {{submission.requestType}}
         </div>
       </div>
 
+      <div class="col-sm-12">
+        <div class="col-sm-3 col-md-2">
+          <label>Message Title:</label>
+        </div>
+
+        <div class="col-sm-9">
+          {{submission.messageTitle}}
+        </div>
+      </div>
     </div>
 
-    <div class="col-sm-12">
-      <h4>Geo-targeting</h4>
+    <div class="row files">
+      <div class="col-sm-12">
+        <h4>Files</h4>
+
+        <div class="file-list">
+          <a *ngFor="let file of submission.uploadedFiles">
+            <span>{{file.name}}</span>
+            <span class="size">({{file.size}} K)</span>
+          </a>
+        </div>
+      </div>
     </div>
 
+    <div class="row comments">
+      <div class="col-sm-12">
+        <h4>Comment</h4>
 
+        <div class="no-padding">
+          {{submission.comments}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Send</h4>
+
+        <div class="col-sm-12 no-padding">
+          <div class="col-sm-3 col-md-2 no-padding">
+            <label>Number of Times:</label>
+          </div>
+
+          <div class="col-sm-9">
+            {{submission.repeatMessage.repeatTimes}}
+          </div>
+        </div>
+
+        <div class="col-sm-12 no-padding dates" *ngFor="let date of submission.repeatMessage.dates; let i = index;">
+          <div class="col-sm-3 col-md-2 no-padding">
+            <label>Date {{ i + 1 }} :</label>
+          </div>
+
+          <div class="col-sm-3 col-md-2">
+            {{date.date}}
+          </div>
+
+          <div class="col-sm-3">
+            {{date.description}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Geo-targeting</h4>
+
+        <div>
+          <div class="col-sm-3 no-padding" *ngFor="let province of submission.geoTargeting">
+            <span>{{province.name}}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row button-row">
+    <button type="button" class="btn btn-default" (click)="goBackToAddNotification()">Go Back</button>
+    <button type="button" class="btn btn-primary" (click)="submitNotification()">Submit</button>
   </div>
 </section>
