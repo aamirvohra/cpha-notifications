@@ -105,16 +105,37 @@
       }
 
       .file-list {
+        .name {
+          display: inline-block;
+        }
+
+        a {
+          padding: 7px 10px;
+          margin-right: 10px;
+          font-weight: bold;
+          background-color: #B3E5FC;
+        }
+      }
+
+      .file-list {
         margin-top: 10px;
 
         a  {
-          padding: 7px 10px;
+          padding: 7px 25px 7px 10px;
           background-color: #B3E5FC;
           margin-right: 10px;
           font-weight: bold;
+          position: relative;
 
           @media (max-width: 991px) {
             display: block;
+            width: 70%;
+            overflow: hidden;
+            margin-bottom: 15px;
+          }
+
+          @media (max-width: 767px) {
+            width: 80%;
           }
 
           .size {
@@ -126,8 +147,9 @@
           }
 
           img {
-            padding-left: 10px;
-            width: 20px;
+            position: absolute;
+            top: 10px;
+            right: 7px;
           }
         }
       }

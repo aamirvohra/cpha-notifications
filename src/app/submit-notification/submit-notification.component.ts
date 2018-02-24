@@ -257,4 +257,12 @@ export class SubmitNotificationComponent implements OnInit {
       }
     }
   }
+
+  public turnOfPreview() {
+    this.previewMode = false;
+  }
+
+  public submitNotification() {
+    console.log(this.notificationSubmissionForm.value);
+  }
 }

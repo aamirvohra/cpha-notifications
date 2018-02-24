@@ -1,4 +1,4 @@
-<section *ngIf="!previewMode" class="submit-notification-wrapper">
+<section [hidden]="previewMode" class="submit-notification-wrapper">
   <div class="row">
     <div class="col-md-12 col-sm-12">
       <h1 class="title">Submit a Notification</h1>
@@ -201,4 +201,4 @@
 
 </section>
 
-<app-preview *ngIf="previewMode" [currentSubmission]="notificationSubmissionForm.value"></app-preview>
+<app-preview *ngIf="previewMode" (editNotification)="turnOfPreview()" (submitNotification)="submitNotification()" [currentSubmission]="notificationSubmissionForm.value"></app-preview>

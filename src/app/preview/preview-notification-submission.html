@@ -48,7 +48,7 @@
       <div class="col-sm-12">
         <h4>Files</h4>
 
-        <div class="file-list">
+        <div class="col-sm-12 no-padding file-list">
           <a *ngFor="let file of submission.uploadedFiles">
             <span>{{file.name}}</span>
             <span class="size">({{file.size}} K)</span>
@@ -102,7 +102,7 @@
         <h4>Geo-targeting</h4>
 
         <div>
-          <div class="col-sm-3 no-padding" *ngFor="let province of submission.geoTargeting">
+          <div class="col-sm-4 no-padding" *ngFor="let province of submission.geoTargeting">
             <span>{{province.name}}</span></div>
         </div>
       </div>
@@ -111,6 +111,6 @@
 
   <div class="row button-row">
     <button type="button" class="btn btn-default" (click)="goBackToAddNotification()">Go Back</button>
-    <button type="button" class="btn btn-primary" (click)="submitNotification()">Submit</button>
+    <button type="button" class="btn btn-primary" (click)="submit()">Submit</button>
   </div>
 </section>
