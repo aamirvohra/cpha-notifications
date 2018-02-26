@@ -183,6 +183,14 @@
         }
       }
 
+      tbody {
+        tr {
+          &:hover {
+            background-color: #D9E7EC;
+          }
+        }
+      }
+
       .file {
         width: 80px;
         min-width: 80px !important;

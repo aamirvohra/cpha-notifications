@@ -135,7 +135,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let report of reportList">
+        <tr *ngFor="let report of reportList" (click)="displayNotificationDetail()">
           <td>
             {{report.product_name}}
           </td>
@@ -177,3 +177,7 @@
     </div>
   </div>
 </section>
+
+<app-notification-detail *ngIf="selectedNotification" [notification]="selectedNotification"
+                         (modalClosed)="onNotificationDescriptionClosed()" (editNotification)="editNotification()"
+                         (notificationArchived)="archiveNotification"></app-notification-detail>

@@ -1,0 +1,109 @@
+<ng-template #template>
+  <section class="notification-detail-wrapper">
+    <div class="modal-header">
+      <h4 class="modal-title">Notification Details</h4>
+      <img (click)="close()" [src]="closeIcon" alt="Close">
+    </div>
+    <div class="modal-body">
+      <div class="form-preview">
+        <div class="row">
+          <div class="col-sm-3">
+            <label>Drug Name:</label>
+          </div>
+
+          <div class="col-sm-9">
+            {{notification.drugName}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <label>Request Type:</label>
+          </div>
+
+          <div class="col-sm-9">
+            {{notification.requestType}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <label>Message Title:</label>
+          </div>
+
+          <div class="col-sm-9">
+            {{notification.messageTitle}}
+          </div>
+        </div>
+
+        <div class="row files">
+          <div class="col-sm-12">
+            <h4>Files</h4>
+          </div>
+
+          <div class="col-sm-12 file-list">
+            <a *ngFor="let file of notification.uploadedFiles">
+              <span>{{file.name}}</span>
+              <span class="size">({{file.size}} K)</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="row comments">
+          <div class="col-sm-12">
+            <h4>Comment</h4>
+
+            <div class="no-padding">
+              {{notification.comments}}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <h4>Send</h4>
+          </div>
+
+          <div class="col-sm-3">
+            <label>Number of Times:</label>
+          </div>
+
+          <div class="col-sm-9">
+            {{notification.repeat.times}}
+          </div>
+        </div>
+
+        <div class="row" *ngFor="let date of notification.repeat.dates; let i = index;">
+          <div class="col-sm-3 dates">
+            <label>Date {{ i + 1 }} :</label>
+          </div>
+
+          <div class="col-sm-3">
+            {{date.date}}
+          </div>
+
+          <div class="col-sm-3">
+            {{date.description}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <h4>Geo-targeting</h4>
+
+            <div>
+              <div class="col-sm-4 no-padding" *ngFor="let province of notification.provinces">
+                <span>{{province.name}}</span></div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal-footer">
+      <button (click)="archive()" type="button" class="btn btn-default">Archive</button>
+      <button (click)="edit()" type="button" class="btn btn-default">Edit</button>
+      <button (click)="close()" type="button" class="btn btn-primary btn-close">Close</button>
+    </div>
+  </section>
+</ng-template>

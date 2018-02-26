@@ -4,6 +4,8 @@ import { ReportsService } from '../services/reports.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DaterangePickerComponent, DaterangepickerConfig } from 'ng2-daterangepicker';
 import * as moment from 'moment';
+import { File, Notification, NotificationDates, NotificationRepeat } from '../models/notification';
+import { Province } from '../../utils/province';
 
 @Component({
   selector: 'app-reports',
@@ -29,6 +31,8 @@ export class ReportsComponent {
   public calendar: ElementRef;
 
   protected filtersVisible: boolean;
+
+  protected selectedNotification: Notification;
 
   constructor(private reportService: ReportsService,
               private dateFilterConfig: DaterangepickerConfig,
@@ -97,6 +101,67 @@ export class ReportsComponent {
 
   public toggleFilters() {
     this.filtersVisible = !this.filtersVisible;
+  }
+
+  public displayNotificationDetail() {
+    const provinces = Province.getProvinceList();
+
+    const filteredProvince = provinces.filter(
+      province => {
+        // only select ontario as province
+        return province.abbr === 'ON';
+      }
+    );
+
+    const notificationRepeat = new NotificationRepeat();
+    notificationRepeat.times = 2;
+    const dates = [];
+
+    const date1 = new NotificationDates();
+    date1.date = '22/10/2018';
+    date1.description = 'Init Date';
+    dates.push(date1);
+
+    const date2 = new NotificationDates();
+    date2.date = '22/11/2018';
+    date2.description = 'Release Date';
+    dates.push(date2);
+
+    notificationRepeat.dates = dates;
+
+    const files = [];
+    const file1 = new File();
+    file1.name = 'Tylenol.pdf';
+    file1.size = '2000';
+    files.push(file1);
+
+    const file2 = new File();
+    file2.name = 'Tylenol_Updated.pdf';
+    file2.size = '2500';
+    files.push(file2);
+
+    const notification = new Notification();
+    notification.provinces = filteredProvince;
+    notification.comments = 'My Test Comments';
+    notification.drugName = 'Pepto Bismol';
+    notification.messageTitle = 'Message with a Title';
+    notification.repeat = notificationRepeat;
+    notification.requestType = 'Test';
+    notification.uploadedFiles = files;
+
+    this.selectedNotification = notification;
+  }
+
+  onNotificationDescriptionClosed() {
+    this.selectedNotification = null;
+  }
+
+  editNotification() {
+    console.log('Edit Notification');
+  }
+
+  archiveNotification() {
+    console.log('Archive Notification');
   }
 
 }
