@@ -124,6 +124,14 @@
     }
   }
 
+  .alert-message {
+    margin-bottom: 0;
+
+    .alert {
+      margin-bottom: 10px;
+    }
+  }
+
   .reports-table {
     margin-left: 0;
     margin-right: 0;

@@ -34,6 +34,9 @@ export class ReportsComponent {
 
   protected selectedNotification: Notification;
 
+  protected displayArchivedAlert: boolean;
+  protected displaySubmissionAlert: boolean;
+
   constructor(private reportService: ReportsService,
               private dateFilterConfig: DaterangepickerConfig,
               private fb: FormBuilder) {
@@ -162,6 +165,12 @@ export class ReportsComponent {
 
   archiveNotification() {
     console.log('Archive Notification');
+    this.displayArchivedAlert = true;
+  }
+
+  closeAlert() {
+    this.displayArchivedAlert = false;
+    this.displaySubmissionAlert = false;
   }
 
 }

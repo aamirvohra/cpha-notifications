@@ -49,16 +49,22 @@ export class NotificationDetailComponent implements OnInit {
   }
 
   close() {
-    this.notificationModalRef.hide();
     this.modalClosed.emit(null);
+    this.closeModal();
   }
 
   archive() {
     this.notificationArchived.emit(null);
+    this.close();
   }
 
   edit() {
     this.editNotification.emit(null);
+    this.close();
+  }
+
+  private closeModal() {
+    this.notificationModalRef.hide();
   }
 
 }

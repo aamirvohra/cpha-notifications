@@ -84,6 +84,16 @@
     </form>
   </div>
 
+  <div *ngIf="displaySubmissionAlert || displayArchivedAlert" class="row alert-message">
+    <div class="col-sm-12">
+      <div class="alert alert-dismissable" role="alert" [ngClass]="{ 'alert-info': displayArchivedAlert, 'alert-success': displaySubmissionAlert }">
+        <button type="button" class="close" data-dismiss="alert" (click)="closeAlert()" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        The notification has been successfully archived.
+      </div>
+    </div>
+  </div>
+
   <div class="row reports-table">
     <div class="col-xs-12 col-sm-12 col-md-12">
       <table class="table table-striped">
@@ -180,4 +190,4 @@
 
 <app-notification-detail *ngIf="selectedNotification" [notification]="selectedNotification"
                          (modalClosed)="onNotificationDescriptionClosed()" (editNotification)="editNotification()"
-                         (notificationArchived)="archiveNotification"></app-notification-detail>
+                         (notificationArchived)="archiveNotification()"></app-notification-detail>
