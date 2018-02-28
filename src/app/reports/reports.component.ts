@@ -6,6 +6,7 @@ import { DaterangePickerComponent, DaterangepickerConfig } from 'ng2-daterangepi
 import * as moment from 'moment';
 import { File, Notification, NotificationDates, NotificationRepeat } from '../models/notification';
 import { Province } from '../../utils/province';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reports',
@@ -39,7 +40,8 @@ export class ReportsComponent {
 
   constructor(private reportService: ReportsService,
               private dateFilterConfig: DaterangepickerConfig,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private router: Router) {
     this.filterIcon = AppURLRepo.FILTER_ICON;
     this.fileIcon = AppURLRepo.FILE_ICON;
     this.upIcon = AppURLRepo.CHEVRON_UP_ICON;
@@ -160,7 +162,7 @@ export class ReportsComponent {
   }
 
   editNotification() {
-    console.log('Edit Notification');
+    this.router.navigate(['/notifications/edit']);
   }
 
   archiveNotification() {

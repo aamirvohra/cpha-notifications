@@ -21,6 +21,7 @@ import {
   PreviewNotificationSubmissionComponent
 } from './preview/preview-notification-submission.component';
 import { NotificationDetailComponent } from './notification-detail/notification-detail.component';
+import { EditNotificationComponent } from './notification/edit/edit-notification.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NotificationDetailComponent } from './notification-detail/notification-
     SubmitNotificationComponent,
     PreviewNotificationSubmissionComponent,
     NotificationDetailComponent,
+    EditNotificationComponent,
   ],
   entryComponents: [
     LoginComponent,
