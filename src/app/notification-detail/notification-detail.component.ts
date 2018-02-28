@@ -34,6 +34,7 @@ export class NotificationDetailComponent implements OnInit {
   constructor(private modalService: BsModalService) {
     this.modalOptions = {
       ignoreBackdropClick: true,
+      keyboard: false,
     };
   }
 
