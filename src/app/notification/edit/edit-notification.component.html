@@ -1,3 +1,201 @@
-<p>
-  edit works!
-</p>
+<section class="edit-notification-wrapper">
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+      <h1 class="title">Edit Notification</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12 title-description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut placerat ligula sit amet leo sodales.
+    </div>
+  </div>
+
+  <div class="row required-field-note">
+    <div class="col-sm-12 col-md-12">
+      Required Fields
+    </div>
+  </div>
+
+  <div class="row form-wrapper">
+    <form [formGroup]="editNotificationForm">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div class="col-md-2 col-sm-3">
+            <label class="required-indicator" for="drug-name">Drug Name:</label>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <select class="form-control" id="drug-name" formControlName="drugName">
+              <option value="null">Select</option>
+              <option value="test">Test</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div class="col-md-2 col-sm-3">
+            <label class="required-indicator" for="request-type">Request Type:</label>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <select class="form-control" id="request-type" formControlName="requestType">
+              <option value="null">Select</option>
+              <option value="test">Test</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 message-title">
+        <div class="form-group">
+          <div class="col-md-2 col-sm-3">
+            <label class="required-indicator" for="message-title">Message Title:</label>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <input class="form-control" type="text" id="message-title" formControlName="messageTitle" placeholder="Enter Title">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 file-upload">
+        <div class="form-group">
+          <div class="col-md-12">
+            <label class="required-indicator">Upload File (Max: 5 MB):</label>
+          </div>
+
+          <div class="col-md-7 hidden-xs hidden-sm"
+               (drop)="onDrop($event)"
+               (dragover)="onDragOver($event)"
+               (dragleave)="onDragLeave(element)"
+               (dragenter)="onDragEnter(element)">
+            <div class="upload-container" #element>
+              <div class="instruction">
+                <div>
+                  <i class="fa fa-2x fa-cloud-upload" aria-hidden="true"></i>
+                </div>
+                <div>
+                  Drag and drop your files, or
+                  <label for="file-explorer">
+                    <input id="file-explorer" type="file" (change)="handleFileUploads($event)">browse
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4 col-xs-6 visible-sm-block visible-xs-block">
+            <div class="input-file-container">
+              <input type="file" (change)="handleFileUploads($event)">Select Files
+            </div>
+          </div>
+
+          <div class="clearfix visible-xs-block visible-sm-block"></div>
+        </div>
+
+        <div class="col-sm-12 file-list">
+          <a *ngFor="let file of editNotificationForm.controls.uploadedFiles.value; let i = index">
+            <span>{{file.name}}</span>
+            <span class="size">({{file.size}} K)</span>
+            <img (click)="editNotificationForm.controls.uploadedFiles.removeAt(i)" [src]="closeIcon">
+          </a>
+        </div>
+      </div>
+
+      <div class="col-sm-12 comments">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <label for="comments">
+              Add comment for CPhA:
+            </label>
+          </div>
+
+          <div class="col-md-7">
+            <textarea  id="comments" rows="4" formControlName="comments"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 send">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <label>
+              <input type="radio" formControlName="send" value="now"> Send now
+            </label>
+
+            <label>
+              <input type="radio" formControlName="send" value="later"> Send later
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-12 repeat" formGroupName="repeatMessage">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <label>
+              <input type="checkbox" formControlName="repeat"> Repeat message
+            </label>
+          </div>
+        </div>
+
+        <div *ngIf="editNotificationForm.controls.repeatMessage.controls.repeat.value" class="col-sm-12 repeat-times">
+          <div class="col-md-2 col-sm-3 col-xs-6">
+            <label class="required-indicator" for="num-times"> Number of Times:</label>
+          </div>
+
+          <div class="col-md-3 col-sm-3 col-xs-6">
+            <select class="form-control select-times" id="num-times" formControlName="repeatTimes">
+              <option *ngFor="let num of [0,1,2,3,4,5]" [value]="num">{{num}}</option>
+            </select>
+          </div>
+        </div>
+
+
+        <ng-container *ngIf="editNotificationForm.controls['repeatMessage'].controls.repeatTimes.value"
+                      formArrayName="dates">
+          <div class="col-sm-12 repeat-dates" *ngFor="let date of dates.controls; let i = index;"
+               [formGroup]="date">
+            <div class="col-md-2 col-sm-3">
+              <label class="required-indicator" for="num-times">Dates {{ i + 1 }}:</label>
+            </div>
+
+            <div class="col-md-10 col-sm-9">
+              <input class="form-control date" type="text" placeholder="DD/MM/YYYY" formControlName="date">
+              <input class="form-control description" type="text" placeholder="Description" formControlName="description">
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+
+      <div class="col-sm-12 geo-targets">
+        <div class="form-group">
+
+          <div class="col-sm-12 geo-target-section">
+            <label class="required-indicator">Geo-targeting</label>
+          </div>
+
+          <div class="col-md-8" formArrayName="geoTargeting">
+            <div class="col-sm-4" *ngFor="let province of editNotificationForm.controls.geoTargeting.controls">
+              <label (click)="onProvinceSelection(province.controls.abbr.value, !province.controls.selected.value)" [formGroup]="province">
+                <input type="checkbox" formControlName="selected"> {{province.controls.name.value}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="button-row">
+        <button type="button" [disabled]="editNotificationForm.pristine" class="btn btn-default" (click)="cancel()">Cancel</button>
+        <button type="button" [disabled]="editNotificationForm.pristine || editNotificationForm.invalid" [disabled]="" class="btn btn-primary" (click)="preview()">Preview</button>
+      </div>
+
+    </form>
+
+  </div>
+</section>

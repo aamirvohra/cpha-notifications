@@ -1,7 +1,7 @@
 export class Province {
   name: string;
   abbr: string;
-  selected: false;
+  selected: boolean;
 
   static getProvinceList(): Array<any> {
     const provinceList = [

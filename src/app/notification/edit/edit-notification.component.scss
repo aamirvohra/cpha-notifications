@@ -1,0 +1,273 @@
+@import '../../../assets/partials/variables.scss';
+
+.edit-notification-wrapper {
+  padding: 50px 150px;
+
+  @media (max-width: 991px) {
+    padding: 30px 20px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 4px 20px 30px 20px;
+  }
+
+  .title {
+    margin-top: 0;
+    margin-bottom: 36px;
+  }
+
+  .title-description {
+    margin-bottom: 10px;
+  }
+
+  .required-field-note {
+    margin-bottom: 50px;
+
+    @media (max-width: 991px) {
+      margin-bottom: 40px;
+    }
+
+    > div {
+      &:before {
+        content: "*";
+        color: red;
+      }
+    }
+  }
+
+  .form-wrapper {
+    // padding: 0 15px;
+
+    input[type="file"] {
+      display: none;
+    }
+
+    form {
+      > [class^="col"] {
+        margin-bottom: 20px;
+
+        @media (max-width: 991px) {
+          margin-bottom: 10px;
+        }
+
+        @media (max-width: 767px) {
+          padding-left: 0;
+          padding-right: 0;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    .message-title {
+      @media (max-width: 991px) {
+        margin-bottom: 30px !important;
+      }
+    }
+
+    .file-upload {
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      @media (max-width: 767px) {
+        // margin-bottom: 30px !important;
+      }
+
+      .upload-container {
+        border: 2px dashed $darkGrey;
+        height: 140px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .instruction {
+          text-align: center;
+          top: 50%;
+
+          .fa {
+            color: lightblue;
+          }
+
+          label {
+            color: $hyperLink;
+
+            &:hover {
+              text-decoration: underline;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      //.file-list {
+      //  .name {
+      //    display: inline-block;
+      //  }
+      //
+      //  a {
+      //    padding: 7px 10px;
+      //    margin-right: 10px;
+      //    font-weight: bold;
+      //    background-color: #B3E5FC;
+      //  }
+      //}
+
+      .file-list {
+        margin-top: 10px;
+
+        a  {
+          padding: 7px 25px 7px 10px;
+          background-color: #B3E5FC;
+          margin-right: 10px;
+          font-weight: bold;
+          position: relative;
+
+          @media (max-width: 991px) {
+            display: block;
+            width: 70%;
+            overflow: hidden;
+            margin-bottom: 15px;
+          }
+
+          @media (max-width: 767px) {
+            width: 80%;
+          }
+
+          .size {
+            color: #666666;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          img {
+            position: absolute;
+            top: 10px;
+            right: 7px;
+          }
+        }
+      }
+    }
+
+    .comments {
+      margin-top: 20px;
+
+      textarea {
+        width: 100%;
+      }
+    }
+
+    .send {
+      margin-top: 20px;
+
+      @media (max-width: 991px) {
+        margin-top: 10px;
+      }
+
+      label {
+        padding-left: 5px;
+        padding-right: 5px;
+
+        &:first-child {
+          padding-left: 0;
+        }
+      }
+    }
+
+    .repeat {
+      margin-top: 6px;
+
+      .select-times, .date {
+        height: 35px;
+        width: 120px;
+        display: inline-block;
+
+        @media(max-width: 767px) {
+          width: 90px;
+        }
+      }
+
+      .description {
+        height: 35px;
+        width: 300px;
+        display: inline-block;
+
+        @media(max-width: 767px) {
+          width: 170px;
+        }
+      }
+
+      .repeat-times {
+        margin-top: 20px;
+      }
+
+      .repeat-times, .repeat-dates {
+        margin-bottom: 20px;
+      }
+    }
+
+    .geo-targets {
+      margin-bottom: 50px;
+
+      @media (max-width: 991px) {
+        margin-bottom: 40px !important;
+      }
+
+      .geo-target-section {
+        margin-bottom: 20px;
+      }
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: flex-end;
+      border-top: 1px solid #d1d1d1;
+      padding: 20px;
+
+      @media (max-width: 767px) {
+        justify-content: space-between;
+        padding: 20px 10px;
+      }
+
+      button {
+        height: 40px;
+        padding: 10px 25px;
+
+        @media (max-width: 767px) {
+          padding: 10px 60px;
+        }
+
+        &:last-child {
+          margin-left: 10px;
+
+
+          @media (max-width: 767px) {
+            margin-left: 0;
+          }
+        }
+
+        &.btn-primary {
+          background: black;
+          color: white;
+        }
+      }
+    }
+
+    .input-file-container {
+      padding: 10px 20px;
+      border: 1px solid #999999;
+      color: #000;
+      text-align: center;
+      background: white;
+
+      input {
+        height: 40px;
+      }
+    }
+  }
+
+  .drag-enter {
+    background-color: $grey;
+  }
+}
