@@ -62,6 +62,7 @@ export class EditNotificationComponent implements OnInit {
     const province = new Province();
     province.name = 'Alberta';
     province.abbr = 'AB';
+    province.selected = true;
     provinces.push(province);
 
     this.notification.provinces = provinces;
@@ -106,16 +107,21 @@ export class EditNotificationComponent implements OnInit {
     );
 
     const fileArray = this.editNotificationForm.get('uploadedFiles') as FormArray;
-    const provinceArray = this.editNotificationForm.get('geoTargeting') as FormArray;
+    const dates = this.editNotificationForm.get('repeatMessage.dates') as FormArray;
+
     for (const file of this.notification.uploadedFiles) {
-      fileArray.push(new FormControl(file.name + file.size));
+      fileArray.push(this.fb.group({
+        name: [file.name],
+        size: [file.size],
+      }));
     }
 
-    for (const province of this.notification.provinces) {
-      provinceArray.push(new FormControl(province.abbr));
+    for (const date of this.notification.repeat.dates) {
+      dates.push(this.fb.group({
+        date: [date.date, [Validators.required]],
+        description: [date.description],
+      }));
     }
-
-    console.log(fileArray.value);
   }
 
   private initForm() {
@@ -124,12 +130,24 @@ export class EditNotificationComponent implements OnInit {
   }
 
   private populateProvinces() {
-    const provincesFormGroup = Province.getProvinceList().map(
+    const province: any = Province.getProvinceList().map(
+      val => {
+        if (this.notification.provinces.find((pro) => val.name === pro.name)) {
+          val.selected = true;
+          return val;
+        }
+        else {
+          return val;
+        }
+      }
+    );
+
+    const provincesFormGroup = province.map(
       val => {
         return this.fb.group({
           abbr: [val.abbr],
           name: [val.name],
-          selected: [false],
+          selected: [val.selected],
         });
       }
     );
