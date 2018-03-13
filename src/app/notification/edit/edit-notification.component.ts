@@ -21,6 +21,8 @@ export class EditNotificationComponent implements OnInit {
 
   public closeIcon: string = AppURLRepo.CLOSE_ICON;
 
+  protected previewMode: boolean;
+
   private readonly allowedFileExtension: Array<string> = [
     'application/pdf',
     'application/msword',
@@ -51,10 +53,14 @@ export class EditNotificationComponent implements OnInit {
     notificationDates.date = '27/02/2018';
     notificationDates.description = 'Test';
 
+    const notificationDates1 = new NotificationDates();
+    notificationDates1.date = '27/02/2018';
+    notificationDates1.description = 'Test';
+
 
     const repeatNotification = new NotificationRepeat();
-    repeatNotification.times = 1;
-    repeatNotification.dates =  [notificationDates];
+    repeatNotification.times = 2;
+    repeatNotification.dates =  [notificationDates, notificationDates1];
 
     this.notification.repeat = repeatNotification;
 
@@ -316,7 +322,7 @@ export class EditNotificationComponent implements OnInit {
   }
 
   protected preview() {
-
+    this.previewMode = true;
   }
 
   get dates() {
@@ -333,6 +339,14 @@ export class EditNotificationComponent implements OnInit {
         }
       }
     }
+  }
+
+  public turnOfPreview() {
+    this.previewMode = false;
+  }
+
+  public editNotification() {
+    console.log('Submit Edit Notification');
   }
 
 }
